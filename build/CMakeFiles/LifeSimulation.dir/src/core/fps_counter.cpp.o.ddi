@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o"
+    }
+  ],
+  "version": 1
+}

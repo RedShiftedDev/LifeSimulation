@@ -1,0 +1,17 @@
+BasedOnStyle: LLVM
+IndentWidth: 2
+TabWidth: 2
+UseTab: Never
+ColumnLimit: 100
+
+IncludeBlocks: Preserve
+SortIncludes: true
+IncludeCategories:
+  - Regex: "^<glad/.*>"
+    Priority: 1
+  - Regex: "^<GLFW/.*>"
+    Priority: 2
+  - Regex: "^<.*>"
+    Priority: 3
+  - Regex: ".*"
+    Priority: 4

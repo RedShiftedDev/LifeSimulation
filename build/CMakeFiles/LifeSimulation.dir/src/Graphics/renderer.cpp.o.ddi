@@ -1,0 +1,9 @@
+{
+  "revision": 0,
+  "rules": [
+    {
+      "primary-output": "CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o"
+    }
+  ],
+  "version": 1
+}
