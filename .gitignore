@@ -1,0 +1,26 @@
+# macOS system files
+.DS_Store
+
+# Ignore the LifeSimulation binary inside the .app bundle
+build/LifeSimulation.app/Contents/MacOS/LifeSimulation
+
+# CMake-generated files and folders
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Clang tools
+clang-tidy.cache
+clangd/
+
+# Cache folder (if generated)
+.cache/
+
+# IDE/editor folders
+.vscode/
+.idea/
+
+# Logs and temporary files
+*.log
+*.tmp

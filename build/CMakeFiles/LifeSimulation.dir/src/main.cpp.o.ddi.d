@@ -119,50 +119,59 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_static_assert.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/TargetConditionals.h \
   /Users/redshifted/LifeSimulation/external/imgui/backends/imgui_impl_sdl3.h \
-  /Users/redshifted/LifeSimulation/external/glm/glm/glm.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/detail/_fixes.hpp \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cmath \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/hypot.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/abs.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/chrono \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/duration.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/ordering.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/enable_if.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_integral.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/integral_constant.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_cv.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/exponential_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_arithmetic.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_floating_point.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_same.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/promote.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/min_max.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/roots.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/integral_constant.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/three_way_comparable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/common_comparison_category.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/size_t.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/common_reference_with.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/convertible_to.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_convertible.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/declval.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/same_as.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/common_reference.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/common_type.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/conditional.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/decay.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_pointer.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_referenceable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_void.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_reference.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_array.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_function.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_cv.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_extent.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_cvref.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/type_identity.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/void_t.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/empty.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/copy_cv.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/copy_cvref.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_lvalue_reference.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_rvalue_reference.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_reference.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/equality_comparable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/boolean_testable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/forward.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/make_const_lvalue_ref.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/totally_ordered.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_floating_point.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/limits \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_arithmetic.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_integral.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_signed.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__undef_macros \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/version \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/type_traits \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_cv_quals.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_lvalue_reference.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_referenceable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_pointer.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_void.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_reference.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/add_rvalue_reference.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/aligned_storage.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/size_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/type_list.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/aligned_union.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/alignment_of.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/common_type.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/conditional.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/decay.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_array.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_function.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_extent.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_cvref.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/type_identity.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/void_t.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/declval.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/empty.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/extent.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/has_virtual_destructor.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_abstract.h \
@@ -175,9 +184,7 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/nullptr_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_const.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_constructible.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_convertible.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_destructible.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_reference.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_all_extents.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_empty.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_enum.h \
@@ -202,7 +209,6 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_unsigned.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_volatile.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/make_signed.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/copy_cv.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/make_unsigned.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/rank.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_const.h \
@@ -214,7 +220,6 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_reference_wrapper.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/functional.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/nat.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/forward.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/underlying_type.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_final.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/conjunction.h \
@@ -223,39 +228,13 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_aggregate.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_swappable.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/negation.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/common_reference.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/copy_cvref.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_bounded_array.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_constant_evaluated.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_nothrow_convertible.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/lazy.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_unbounded_array.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/unwrap_ref.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/special_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/copysign.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/math.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/math.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/error_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/fdim.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/fma.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/gamma.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/hyperbolic_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/inverse_hyperbolic_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/inverse_trigonometric_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/logarithms.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/modulo.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/remainder.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/rounding_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/trigonometric_functions.h \
-  /Users/redshifted/LifeSimulation/external/glm/glm/detail/setup.hpp \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cassert \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstddef \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/byte.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/byte.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/max_align_t.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/ptrdiff_t.h \
-  /Users/redshifted/LifeSimulation/external/glm/glm/detail/../simd/platform.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/ratio \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/climits \
   /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/limits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/limits.h \
@@ -263,95 +242,140 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/arm/limits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/arm/_limits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/syslimits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cfloat \
-  /Users/redshifted/LifeSimulation/external/glm/glm/fwd.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/detail/qualifier.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/vec2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec2.inl \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/./compute_vector_relational.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/./setup.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool2_precision.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_float2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_float2_precision.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_double2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_double2_precision.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_int2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_int2_sized.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../ext/scalar_int_sized.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../ext/../detail/setup.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_uint2.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_uint2_sized.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../ext/scalar_uint_sized.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/vec3.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool3.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec3.hpp \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec3.inl \
-  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/compute_vector_decl.hpp \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/functional \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binary_function.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binary_negate.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/bind.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/weak_result_type.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/unary_function.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/tuple \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/common_comparison_category.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/ordering.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/synth_three_way.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/three_way_comparable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/common_reference_with.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/convertible_to.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/same_as.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/equality_comparable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/boolean_testable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/make_const_lvalue_ref.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/totally_ordered.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/array.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/file_clock.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/system_clock.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/time_point.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/ctime \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/time.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_time.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_clock_t.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_time_t.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_timespec.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/high_resolution_clock.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/steady_clock.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/calendar.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/day.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/exception.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/hh_mm_ss.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/literals.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/local_info.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/month.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/month_weekday.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/weekday.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/monthday.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/sys_info.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year_month.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year_month_day.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year_month_weekday.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/formatter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_copy.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy_move_common.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/unwrap_iter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iterator_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/arithmetic.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_signed_integer.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_unsigned_integer.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/constructible.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/destructible.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/copyable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/assignable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/movable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/swappable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/class_or_enum.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/exchange.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/move.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/swap.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/ptrdiff_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/pair.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/tuple.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator_arg_t.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/uses_allocator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/find_index.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/ignore.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/make_tuple_types.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_element.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_indices.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/integer_sequence.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_types.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_size.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/sfinae_helpers.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_like_ext.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_implicitly_default_constructible.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_trivially_relocatable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/maybe_const.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/move.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/piecewise_construct.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/swap.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/compare \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_partial_order_fallback.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/partial_order.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_three_way.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/weak_order.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/strong_order.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/bit_cast.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/priority_tag.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_strong_order_fallback.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_three_way_result.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_weak_order_fallback.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/is_eq.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/exception \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/exception.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/exception_ptr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/operations.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/incrementable_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_primary_template.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_valid_expansion.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/readable_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/pointer_traits.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/addressof.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/construct_at.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/unwrap_range.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/concepts.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/derived_from.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/invocable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/invoke.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/predicate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/regular.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/semiregular.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/relation.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iter_move.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/next.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__assert \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__assertion_handler \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__verbose_abort \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/advance.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/convert_to_integral.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/unreachable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/pair.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/synth_three_way.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/different_from.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/array.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_indices.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/integer_sequence.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_like_no_subrange.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/complex.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_size.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_types.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_implicitly_default_constructible.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_trivially_relocatable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/piecewise_construct.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__string/constexpr_c_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/construct_at.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/access.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/placement_new_delete.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/datasizeof.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_always_bitcastable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_equality_comparable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_trivially_lexicographically_comparable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/byte.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/element_count.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/is_pointer_in_range.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/comp.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/desugars_to.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/is_valid_range.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/for_each_segment.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/segmented_iterator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/min.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/comp_ref_type.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/min_element.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/identity.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_callable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/initializer_list \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstddef \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/byte.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/max_align_t.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/in_out_result.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/access.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/enable_borrowed_range.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/auto_cast.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/concepts.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/data.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/enable_view.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/size.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/dangling.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/concepts.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_specialization.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/convert_to_tm.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/statically_widen.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/concepts.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_parse_context.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_error.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/stdexcept \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/exception.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/string.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/memory.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/memory_resource.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstdlib \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/exception \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/exception_ptr.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/operations.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/typeinfo \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/nested_exception.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__exception/terminate.h \
@@ -361,16 +385,12 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/global_new_delete.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/exceptions.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/nothrow_t.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/element_count.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/new_handler.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/interference_size.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/launder.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__new/destroying_delete_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/iosfwd \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/fstream.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/string.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/memory.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/memory_resource.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/ios.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/istream.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/ostream.h \
@@ -379,155 +399,31 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__std_mbstate_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__mbstate_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_mbstate_t.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/utility \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/pair.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/different_from.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_like_no_subrange.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/complex.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/rel_ops.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/exchange.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/as_const.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/in_place.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/cmp.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/arithmetic.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_signed_integer.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_unsigned_integer.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/initializer_list \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binder1st.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binder2nd.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/string_view \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/hash.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/unary_function.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstring \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/mem_fn.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/mem_fun_ref.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/operations.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/desugars_to.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/pointer_to_binary_function.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/pointer_to_unary_function.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/reference_wrapper.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/unary_negate.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/function.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/invoke.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iterator_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/constructible.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/destructible.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/copyable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/assignable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/movable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/swappable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/class_or_enum.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/incrementable_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_primary_template.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_valid_expansion.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/readable_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocate_at_least.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/pointer_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/detected_or.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator_destructor.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/compressed_pair.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/datasizeof.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/unique_ptr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/array_cookie.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/auto_ptr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/dependent_type.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/private_constructor_tag.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/strip_signature.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/boyer_moore_searcher.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/fill_n.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/min.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/comp.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/comp_ref_type.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/min_element.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/identity.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_callable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/bit_reference.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/convert_to_integral.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/distance.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/concepts.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/derived_from.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/invocable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/predicate.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/regular.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/semiregular.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__concepts/relation.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iter_move.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/access.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/enable_borrowed_range.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/auto_cast.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/concepts.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/data.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/enable_view.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/size.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/shared_ptr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocation_guard.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/shared_count.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/uninitialized_algorithms.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy_move_common.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/unwrap_iter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/unwrap_range.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/next.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/advance.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/unreachable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__string/constexpr_c_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_always_bitcastable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_equality_comparable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_trivially_lexicographically_comparable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/is_pointer_in_range.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/is_valid_range.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/for_each_segment.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/segmented_iterator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/move.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/iterator_operations.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/iter_swap.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_iterator_concept.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iter_swap.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/prev.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/string_view.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/bounded_iter.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/reverse_iterator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_three_way_result.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iter_swap.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/iterator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/prev.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/subrange.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/subrange.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/dangling.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/view_interface.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/empty.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/exception_guard.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/memory_order.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/vector.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy_n.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/max.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/max_element.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/move_backward.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_copy_n.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/in_out_result.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_copy.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/unreachable_sentinel.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_element.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/wrap_iter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/rotate.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/swap_ranges.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__debug_utils/sanitizers.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/enable_insertable.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/vector.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/bounded_iter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/move_iterator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/move_sentinel.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/noexcept_move_assign_container.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/swap_allocator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/temp_value.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/container_compatible_range.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/from_range.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__split_buffer \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_allocator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/stdexcept \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/comparison.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/equal.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/lexicographical_compare.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/mismatch.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/simd_utils.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/countl.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/rotate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__string/char_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/fill_n.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/bit_reference.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_segment_if.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/countr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/aliasing_iterator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/rotate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/invert_if.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cwchar \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cwctype \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cctype \
@@ -554,22 +450,52 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_seek_set.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_ctermid.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_off_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/time.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_time.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_clock_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_time_t.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_timespec.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/lexicographical_compare_three_way.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/three_way_comp_ref_type.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/container_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/container_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/swap.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/array \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/static_bounded_iter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_end.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/iterator_operations.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/iter_swap.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_iterator_concept.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/distance.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_first_of.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstdio \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/data.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/empty.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/reverse_access.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/size.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/compare \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_partial_order_fallback.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/partial_order.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_three_way.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/weak_order.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/strong_order.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/bit_cast.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/exponential_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/promote.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/priority_tag.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_strong_order_fallback.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/compare_weak_order_fallback.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__compare/is_eq.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cmath \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/hypot.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/abs.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/min_max.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/roots.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/special_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/copysign.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/math.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/math.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/error_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/fdim.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/fma.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/gamma.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/hyperbolic_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/inverse_hyperbolic_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/inverse_trigonometric_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/logarithms.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/modulo.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/remainder.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/rounding_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__math/trigonometric_functions.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/algorithm \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/adjacent_find.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/all_of.h \
@@ -579,22 +505,23 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/half_positive.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy_backward.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy_if.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/copy_n.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/count.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/invert_if.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/popcount.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/count_if.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/equal.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/equal_range.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/upper_bound.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/fill.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_segment_if.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_end.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_first_of.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_if.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/find_if_not.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/for_each.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/movable_box.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/optional \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/sfinae_helpers.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/make_tuple_types.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/tuple_like_ext.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/in_place.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/atomic \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/aliases.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/atomic.h \
@@ -602,15 +529,9 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/contention_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/support.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/support/c11.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/memory_order.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/to_gcc_order.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/duration.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/ratio \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__thread/poll_with_backoff.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/high_resolution_clock.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/steady_clock.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/time_point.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/system_clock.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/ctime \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/check_memory_order.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/is_always_lock_free.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__atomic/atomic_lock_free.h \
@@ -649,15 +570,28 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/istream_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/default_sentinel.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/istreambuf_iterator.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__string/char_traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstdio \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/move_iterator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/move_sentinel.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/ostream_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/ostreambuf_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/common_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/variant \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/operations.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binary_function.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/variant.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/find_index.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/dependent_type.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/forward_like.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__variant/monostate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/tuple \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator_arg_t.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/uses_allocator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__tuple/ignore.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/maybe_const.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/utility \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/rel_ops.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/as_const.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/cmp.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/counted_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/indirectly_comparable.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/projected.h \
@@ -665,10 +599,28 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/ranges_operations.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/permutable.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/sortable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/unreachable_sentinel.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/memory \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/align.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocate_at_least.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/detected_or.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/auto_ptr.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/inout_ptr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_specialization.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/shared_ptr.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/reference_wrapper.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/weak_result_type.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocation_guard.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/allocator_destructor.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/compressed_pair.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/shared_count.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/uninitialized_algorithms.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/move.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/exception_guard.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/unique_ptr.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/array_cookie.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/private_constructor_tag.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/out_ptr.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/raw_storage_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/temporary_buffer.h \
@@ -682,6 +634,9 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/generate_n.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/includes.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/inplace_merge.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/rotate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/move_backward.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/swap_ranges.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/destruct_n.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/is_heap.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/is_heap_until.h \
@@ -689,8 +644,15 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/is_permutation.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/is_sorted.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/is_sorted_until.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/lexicographical_compare.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/mismatch.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/simd_utils.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/countl.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/aliasing_iterator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/make_heap.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/sift_down.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/max.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/max_element.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/merge.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/minmax.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/minmax_element.h \
@@ -749,6 +711,8 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/in_in_out_result.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/in_in_result.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/in_out_out_result.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/lexicographical_compare_three_way.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/three_way_comp_ref_type.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/min_max_result.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_adjacent_find.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_all_of.h \
@@ -760,6 +724,7 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_find_if.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_copy_backward.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_copy_if.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_copy_n.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_count.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_count_if.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/ranges_equal.h \
@@ -844,36 +809,38 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/bit_width.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/endian.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit/has_single_bit.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/unordered_map \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/is_transparent.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__hash_table \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/can_extract_key.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_const_ref.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/erase_if_container.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/ranges_iterator_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/format.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/utc_clock.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/zoned_time.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/ostream.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_functions.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/buffer.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/enable_insertable.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_to_n_result.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_arg.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_arg_store.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/string \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__debug_utils/sanitizers.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ios/fpos.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/noexcept_move_assign_container.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/swap_allocator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory_resource/polymorphic_allocator.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory_resource/memory_resource.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__node_handle \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/default_searcher.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/not_fn.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/perfect_forward.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/bind_back.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/bind_front.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/vector \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/vector_bool.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit_reference \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/pmr.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/erase.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cerrno \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/clocale \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/locale.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_locale.h \
-  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_types/_locale_t.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/locale \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/container_compatible_range.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/from_range.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__string/extern_template_lists.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_allocator.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/scope_guard.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_args.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_context.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__locale \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__locale_dir/locale_base_api.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__locale_dir/support/apple.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__locale_dir/support/bsd_like.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/clocale \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/locale.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_locale.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_types/_locale_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/xlocale.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_xlocale.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/__xlocale.h \
@@ -887,17 +854,43 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/xlocale/_wctype.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__mutex/once_flag.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/no_destroy.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/string \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ios/fpos.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__string/extern_template_lists.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/scope_guard.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/string_view \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/string_view.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_string.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_bool.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_integral.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_integral.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/tables.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_base_10.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_result.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__system_error/errc.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cerrno \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/make_32_64_or_128_bit.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_output.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/parser_std_format_spec.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/unicode.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/extended_grapheme_cluster_table.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/indic_conjunct_break_table.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/width_estimation_table.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/array \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/static_bounded_iter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_char.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/write_escaped.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/escaped_output_table.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_floating_point.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/chars_format.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/to_underlying.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_floating_point.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_integer.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_pointer.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_string.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/sstream \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ostream/basic_ostream.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ostream/put_character_sequence.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__locale_dir/pad_and_output.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/ios \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__system_error/error_category.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__system_error/error_code.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__system_error/errc.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__system_error/error_condition.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__system_error/system_error.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/mutex \
@@ -909,6 +902,10 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__mutex/lock_guard.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__thread/id.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/system_error \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/bitset \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__bit_reference \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_char_like_type.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/locale \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/streambuf \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/nl_types.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/types.h \
@@ -941,6 +938,97 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_fsfilcnt_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_types/_nl_item.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstdarg \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/istream \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/ostream \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/format \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/container_adaptor.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/range_default_formatter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/range_formatter.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/queue.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/deque.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/vector.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/stack.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/ref_view.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_tuple.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/queue \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/deque \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__memory/temp_value.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__split_buffer \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/container_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/functional \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binary_negate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/bind.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binder1st.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/binder2nd.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/mem_fn.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/mem_fun_ref.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/pointer_to_binary_function.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/pointer_to_unary_function.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/unary_negate.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/function.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/strip_signature.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/boyer_moore_searcher.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/vector.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/comparison.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/container_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/swap.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/unordered_map \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/is_transparent.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__hash_table \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/can_extract_key.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/remove_const_ref.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/erase_if_container.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__iterator/ranges_iterator_traits.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__node_handle \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/default_searcher.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/not_fn.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/perfect_forward.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/bind_back.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__functional/bind_front.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/vector \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/vector_bool.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/pmr.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__vector/erase.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/stack \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/print \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/parser_std_format_spec.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/forward_list \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/charconv \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/from_chars_floating_point.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/from_chars_result.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/from_chars_integral.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars.h \
+  /Users/redshifted/LifeSimulation/external/glm/glm/glm.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/detail/_fixes.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/detail/setup.hpp \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cassert \
+  /Users/redshifted/LifeSimulation/external/glm/glm/detail/../simd/platform.h \
+  /opt/homebrew/opt/llvm/bin/../include/c++/v1/cfloat \
+  /Users/redshifted/LifeSimulation/external/glm/glm/fwd.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/detail/qualifier.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/vec2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec2.inl \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/./compute_vector_relational.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/./setup.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool2_precision.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_float2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_float2_precision.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_double2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_double2_precision.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_int2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_int2_sized.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../ext/scalar_int_sized.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../ext/../detail/setup.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_uint2.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_uint2_sized.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../ext/scalar_uint_sized.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/vec3.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool3.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec3.hpp \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/type_vec3.inl \
+  /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/compute_vector_decl.hpp \
   /Users/redshifted/LifeSimulation/external/glm/glm/./ext/../detail/_vectorize.hpp \
   /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_bool3_precision.hpp \
   /Users/redshifted/LifeSimulation/external/glm/glm/./ext/vector_float3.hpp \
@@ -1067,98 +1155,10 @@ CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: \
   /Users/redshifted/LifeSimulation/external/glm/glm/gtc/../ext/matrix_transform.inl \
   /Users/redshifted/LifeSimulation/external/glm/glm/gtc/matrix_transform.inl \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/iostream \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/istream \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ostream/basic_ostream.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ostream/put_character_sequence.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/bitset \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_char_like_type.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/ostream \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/format \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/buffer.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/concepts.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_parse_context.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_error.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/format.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_to_n_result.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/container_adaptor.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/range_default_formatter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/statically_widen.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/range_formatter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_context.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_arg.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_arg_store.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_args.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_output.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/parser_std_format_spec.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_string.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/unicode.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/extended_grapheme_cluster_table.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/indic_conjunct_break_table.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/width_estimation_table.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/queue.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/deque.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__fwd/stack.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__ranges/ref_view.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/escaped_output_table.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/format_functions.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_bool.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_integral.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_integral.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/tables.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_base_10.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_result.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/traits.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/make_32_64_or_128_bit.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_char.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/write_escaped.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_floating_point.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/chars_format.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__utility/to_underlying.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars_floating_point.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_integer.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_pointer.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_string.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__format/formatter_tuple.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/queue \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/deque \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/stack \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/print \
   /Users/redshifted/LifeSimulation/src/GUI/gui.h \
   /Users/redshifted/LifeSimulation/src/Graphics/renderer.h \
   /Users/redshifted/LifeSimulation/src/Graphics/shader.h \
   /Users/redshifted/LifeSimulation/src/core/fps_counter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/chrono \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/file_clock.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/calendar.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/day.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/exception.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/hh_mm_ss.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/literals.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/local_info.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/month.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/month_weekday.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/weekday.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/monthday.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/sys_info.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year_month.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year_month_day.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/year_month_weekday.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/formatter.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/concepts.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/convert_to_tm.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/utc_clock.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/zoned_time.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/ostream.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/sstream \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__chrono/parser_std_format_spec.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/forward_list \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/charconv \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/from_chars_floating_point.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/from_chars_result.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/from_chars_integral.h \
-  /opt/homebrew/opt/llvm/bin/../include/c++/v1/__charconv/to_chars.h \
   /Users/redshifted/LifeSimulation/src/core/window.h \
   /opt/homebrew/include/SDL3/SDL.h \
   /opt/homebrew/include/SDL3/SDL_stdinc.h \
