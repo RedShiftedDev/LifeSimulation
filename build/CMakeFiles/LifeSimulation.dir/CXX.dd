@@ -11,6 +11,12 @@ build CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o: dyndep
 
 build CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o: dyndep
 
+build CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o: dyndep
+
+build CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o: dyndep
+
+build CMakeFiles/LifeSimulation.dir/src/Common.cpp.o: dyndep
+
 build CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o: dyndep
 
 build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o: dyndep

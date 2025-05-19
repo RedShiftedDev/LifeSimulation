@@ -1,200 +1,169 @@
 #include "GUI/gui.h"
 #include <algorithm>
 #include <imgui.h>
-#include <random>
+#include "../Graphics/Simulation.h"
+#include "Common.h"
+#include "core/system_utils.h"
 
 namespace gui {
+bool buttonWasClicked = false;
 
-// Simulation parameters
-std::vector<Circle> circles;
-float gravity = 9.8F;
-float bounceFactor = 0.7f;
-float friction = 0.02f;
-int maxCircles = 100;
-float circleMinRadius = 10.0f;
-float circleMaxRadius = 50.0f;
-float windowWidth = 1280.0f;
-float windowHeight = 720.0f;
+void PerformanceWindow(const FpsCounter &fpsCounter) {
+  // Performance metrics section
+  if (ImGui::CollapsingHeader("Performance Metrics", ImGuiTreeNodeFlags_DefaultOpen)) {
+    ImGui::Columns(2, "perfMetrics");
 
-// Random number generation
-std::random_device rd;
-std::mt19937 gen(rd());
-std::uniform_real_distribution<float> colorDist(0.0f, 1.0f);
-std::uniform_real_distribution<float> radiusDist(circleMinRadius, circleMaxRadius);
-std::uniform_real_distribution<float> velocityDist(-100.0f, 100.0f);
+    // FPS and Frame Time
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.4F, 0.8F, 1.0F, 1.0F));
+    ImGui::Text("FPS: %.1f", fpsCounter.getFps());
+    ImGui::PopStyleColor();
 
-// Helper function to generate random color
-glm::vec3 getRandomColor() { return glm::vec3(colorDist(gen), colorDist(gen), colorDist(gen)); }
+    ImGui::NextColumn();
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.7F, 0.5F, 1.0F, 1.0F));
+    ImGui::Text("Frame Time: %.2f ms", 1000.0F / fpsCounter.getFps());
+    ImGui::PopStyleColor();
 
-void AddCircle(float x, float y) {
-  // Limit the total number of circles
-  if (circles.size() >= static_cast<size_t>(maxCircles)) {
-    return;
+    // Memory Usage and Entity Count
+    ImGui::NextColumn();
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.5F, 0.9F, 0.5F, 1.0F));
+    ImGui::Text("Memory: %.1f MB", SystemUtils::getApplicationMemoryUsage());
+    ImGui::PopStyleColor();
+
+    ImGui::NextColumn();
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.8f, 0.4f, 1.0f));
+    ImGui::Text("Entities: %zu", simulation::particleCount);
+    ImGui::PopStyleColor();
+
+    ImGui::Columns(1);
+
+    // FPS Graph
+    static float values[90] = {};
+    static int values_offset = 0;
+    static float refresh_time = 0.0F;
+
+    float current_time = ImGui::GetTime();
+    if (current_time - refresh_time >= 0.1F) {
+      values[values_offset] = fpsCounter.getFps();
+      values_offset = (values_offset + 1) % IM_ARRAYSIZE(values);
+      refresh_time = current_time;
+    }
+
+    float average = 0.0F;
+    for (float value : values) {
+      average += value;
+    }
+    average /= static_cast<float>(IM_ARRAYSIZE(values));
+
+    // Graph styling
+    ImGui::PushStyleColor(ImGuiCol_PlotLines, ImVec4(0.4F, 0.8F, 1.0F, 1.0F));
+    ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1F, 0.12F, 0.15F, 0.9F));
+    ImGui::PushStyleColor(ImGuiCol_PlotLinesHovered, ImVec4(0.7F, 0.5F, 1.0F, 1.0F));
+
+    char overlay[32];
+    snprintf(overlay, sizeof(overlay), "Avg %.1f FPS", average);
+    ImGui::PlotLines("##FPS", values, IM_ARRAYSIZE(values), values_offset, overlay, 0.0F, 120.0F,
+                     ImVec2(0, 80.0F));
+
+    ImGui::PopStyleColor(3);
   }
-
-  float radius = radiusDist(gen);
-
-  // Make sure circle is within window bounds
-  x = std::clamp(x, radius, windowWidth - radius);
-  y = std::clamp(y, radius, windowHeight - radius);
-
-  Circle newCircle;
-  newCircle.x = x;
-  newCircle.y = y;
-  newCircle.radius = radius;
-  newCircle.color = getRandomColor();
-  newCircle.velocityX = velocityDist(gen);
-  newCircle.velocityY = velocityDist(gen);
-
-  circles.push_back(newCircle);
 }
 
-void RandomizeColors() {
-  for (auto &circle : circles) {
-    circle.color = getRandomColor();
+void RenderGui(const FpsCounter &fpsCounter) {
+  // Set window styling
+  ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 12.0F);
+  ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 8.0F);
+  ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.07F, 0.07F, 0.09F, 0.94F));
+  ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.4F, 0.4F, 0.8F, 0.5F));
+  ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.3F, 0.3F, 0.7F, 0.5F));
+
+  ImGui::Begin("Simulation Controls", nullptr,
+               ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoScrollbar);
+
+  // Title
+  ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
+  ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "Particle System");
+  ImGui::PopFont();
+  ImGui::Spacing();
+
+  // Speed Control with gradient
+  ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1F, 0.1F, 0.2F, 1.0F));
+  ImGui::PushStyleColor(ImGuiCol_SliderGrab, ImVec4(0.3F, 0.7F, 0.9F, 1.0F));
+  ImGui::PushStyleColor(ImGuiCol_SliderGrabActive, ImVec4(0.4F, 0.8F, 1.0F, 1.0F));
+  if (ImGui::DragFloat("Simulation Speed", &simulation::simulationSpeed, 0.1F, 0.1F, 25.0F,
+                       "%.1fx")) {
+    simulation::simulationSpeed = std::max(simulation::simulationSpeed, 0.1F);
   }
-}
+  ImGui::PopStyleColor(3);
 
-// Manual circle spawning at center with user-defined parameters
-bool spawnManualCircle = false;
-float manualRadius = 30.0f;
-float manualVelocityX = 0.0f;
-float manualVelocityY = 0.0f;
-ImVec4 circleColor = ImVec4(0.2f, 0.5f, 0.8f, 1.0f); // Default to blue
-
-void RenderGui() {
-  ImGui::Begin("Simulation Controls");
-
-  // === Physics parameters section ===
-  if (ImGui::CollapsingHeader("Physics Parameters", ImGuiTreeNodeFlags_DefaultOpen)) {
-    ImGui::SliderFloat("Gravity", &gravity, 0.0f, 50.0f, "%.1f");
-    ImGui::SliderFloat("Bounce Factor", &bounceFactor, 0.0f, 1.0f, "%.2f");
-    ImGui::SliderFloat("Friction", &friction, 0.0f, 0.1f, "%.3f");
+  // Background Color Control
+  ImGui::Spacing();
+  ImGui::TextColored(ImVec4(0.4F, 0.8F, 1.0F, 1.0F), "Background Color");
+  ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1F, 0.1F, 0.2F, 1.0F));
+  float bgColor[4] = {glBackgroundColour.r, glBackgroundColour.g, glBackgroundColour.b,
+                      glBackgroundColour.a};
+  if (ImGui::ColorEdit4("##BackgroundColor", bgColor)) {
+    glBackgroundColour = glm::vec4(bgColor[0], bgColor[1], bgColor[2], bgColor[3]);
   }
+  ImGui::PopStyleColor();
 
-  // === Circle spawning section ===
-  if (ImGui::CollapsingHeader("Circle Spawning", ImGuiTreeNodeFlags_DefaultOpen)) {
-    if (ImGui::Button("Spawn Random Circle")) {
-      float x = windowWidth / 2.0f;
-      float y = windowHeight / 2.0f;
-      AddCircle(x, y);
-    }
-
-    ImGui::SameLine();
-
-    if (ImGui::Button("Clear All Circles")) {
-      circles.clear();
-    }
-
-    // Manual circle parameters
-    ImGui::Checkbox("Custom Circle Settings", &spawnManualCircle);
-
-    if (spawnManualCircle) {
-      ImGui::SliderFloat("Radius", &manualRadius, 10.0f, 100.0f, "%.1f");
-      ImGui::SliderFloat("X Velocity", &manualVelocityX, -200.0f, 200.0f, "%.1f");
-      ImGui::SliderFloat("Y Velocity", &manualVelocityY, -200.0f, 200.0f, "%.1f");
-      ImGui::ColorEdit3("Circle Color", (float *)&circleColor);
-
-      if (ImGui::Button("Spawn Custom Circle")) {
-        if (circles.size() < static_cast<size_t>(maxCircles)) {
-          Circle newCircle;
-          newCircle.x = windowWidth / 2.0f;
-          newCircle.y = windowHeight / 2.0f;
-          newCircle.radius = manualRadius;
-          newCircle.color = glm::vec3(circleColor.x, circleColor.y, circleColor.z);
-          newCircle.velocityX = manualVelocityX;
-          newCircle.velocityY = manualVelocityY;
-
-          circles.push_back(newCircle);
-        }
-      }
-    }
-
-    ImGui::SliderInt("Max Circles", &maxCircles, 1, 500);
-
-    ImGui::Text("Current circle count: %zu", circles.size());
+  // Create Particle button with direct debug feedback
+  buttonWasClicked = false;
+  if (ImGui::Button("Create Particle")) {
+    simulation::createParticle = true;
+    buttonWasClicked = true;
   }
+  ImGui::Spacing();
+  ImGui::TextColored(ImVec4(0.9F, 0.9F, 0.9F, 1.0F), "Active Particles:");
+  ImGui::SameLine();
+  ImGui::TextColored(ImVec4(0.4F, 0.8F, 1.0F, 1.0F), "%zu", simulation::particleCount);
 
-  // === Appearance section ===
-  if (ImGui::CollapsingHeader("Appearance", ImGuiTreeNodeFlags_DefaultOpen)) {
-    if (ImGui::Button("Randomize All Colors")) {
-      RandomizeColors();
+  // Collision Settings
+  ImGui::Spacing();
+  if (ImGui::CollapsingHeader("Collision Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
+    ImGui::Indent(10.0F);
+
+    // Boundary toggle with custom checkbox
+    ImGui::PushStyleColor(ImGuiCol_CheckMark, ImVec4(0.4F, 0.8F, 1.0F, 1.0F));
+    ImGui::Checkbox("Enable Boundaries", &simulation::enableBounds);
+    ImGui::PopStyleColor();
+
+    if (simulation::enableBounds) {
+      ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1F, 0.1F, 0.2F, 1.0F));
+      ImGui::DragFloat("Left Boundary", &simulation::boundaryLeft, 1.0F, -WINDOW_WIDTH / 2.0F,
+                       WINDOW_WIDTH / 2.0F);
+      ImGui::DragFloat("Right Boundary", &simulation::boundaryRight, 1.0F, -WINDOW_WIDTH / 2.0F,
+                       WINDOW_WIDTH / 2.0F);
+      ImGui::DragFloat("Top Boundary", &simulation::boundaryTop, 1.0F, -WINDOW_HEIGHT / 2.0F,
+                       WINDOW_HEIGHT / 2.0F);
+      ImGui::DragFloat("Bottom Boundary", &simulation::boundaryBottom, 1.0F, -WINDOW_HEIGHT / 2.0F,
+                       WINDOW_HEIGHT / 2.0F);
+      ImGui::PopStyleColor();
     }
-
-    ImGui::SliderFloat("Min Circle Size", &circleMinRadius, 5.0f, 50.0f);
-    ImGui::SliderFloat("Max Circle Size", &circleMaxRadius, circleMinRadius, 100.0f);
-
-    // Update the radius distribution when min/max changes
-    radiusDist = std::uniform_real_distribution<float>(circleMinRadius, circleMaxRadius);
+    ImGui::Unindent(10.0F);
   }
 
-  // === Explosion effect ===
-  if (ImGui::CollapsingHeader("Special Effects")) {
-    if (ImGui::Button("Explosion!")) {
-      // Apply explosion force to all circles
-      float explosionPower = 500.0f;
-      float explosionX = windowWidth / 2.0f;
-      float explosionY = windowHeight / 2.0f;
-
-      for (auto &circle : circles) {
-        // Calculate direction from explosion center
-        float dx = circle.x - explosionX;
-        float dy = circle.y - explosionY;
-        float distance = std::sqrt(dx * dx + dy * dy);
-
-        // Avoid division by zero
-        if (distance < 0.1f)
-          distance = 0.1f;
-
-        // Apply force inversely proportional to distance
-        float force = explosionPower / distance;
-        circle.velocityX += (dx / distance) * force;
-        circle.velocityY += (dy / distance) * force;
-      }
-    }
-
-    ImGui::SameLine();
-
-    if (ImGui::Button("Implode")) {
-      // Apply implosion force to all circles
-      for (auto &circle : circles) {
-        // Direction toward center
-        float dx = (windowWidth / 2.0f) - circle.x;
-        float dy = (windowHeight / 2.0f) - circle.y;
-        float magnitude = std::sqrt(dx * dx + dy * dy);
-
-        // Avoid division by zero
-        if (magnitude < 0.1f)
-          magnitude = 0.1f;
-
-        // Normalize and apply force
-        circle.velocityX += (dx / magnitude) * 100.0f;
-        circle.velocityY += (dy / magnitude) * 100.0f;
-      }
-    }
-  }
-
-  // Debug/Status section
+  // Performance section
   ImGui::Separator();
-  ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate,
-              ImGui::GetIO().Framerate);
+  PerformanceWindow(fpsCounter);
 
   ImGui::End();
+
+  // Pop all style modifications
+  ImGui::PopStyleColor(3);
+  ImGui::PopStyleVar(2);
 }
 
-// Accessor functions
-const std::vector<Circle> &GetCircles() { return circles; }
+bool ShouldCreateParticle() {
+  // Debug output to track flag state
+  bool result = simulation::createParticle;
+  if (result) {
+    simulation::createParticle = false;
+  }
+  return result;
+}
 
-void SetGravity(float value) { gravity = value; }
+void ResetParticleCreation() { simulation::createParticle = false; }
 
-float GetGravity() { return gravity; }
-
-void SetBounceFactor(float value) { bounceFactor = value; }
-
-float GetBounceFactor() { return bounceFactor; }
-
-void SetFriction(float value) { friction = value; }
-
-float GetFriction() { return friction; }
+bool HasBounds() { return simulation::enableBounds; }
 
 } // namespace gui

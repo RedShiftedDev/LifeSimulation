@@ -1,6 +1,6 @@
 CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
-  /Users/redshifted/LifeSimulation/src/core/fps_counter.cpp \
-  /Users/redshifted/LifeSimulation/src/core/fps_counter.h \
+  /Users/redshifted/codes/LifeSimulation/src/core/fps_counter.cpp \
+  /Users/redshifted/codes/LifeSimulation/src/core/fps_counter.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/chrono \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__config \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__config_site \
@@ -93,7 +93,7 @@ CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_trivially_constructible.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_trivially_copyable.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstdint \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/stdint.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/stdint.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/stdint.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_int8_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_int16_t.h \
@@ -111,17 +111,17 @@ CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/arm/_types.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_ptrdiff_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/stddef.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/stddef.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_ptrdiff_t.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/stddef.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_ptrdiff_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_size_t.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_size_t.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_size_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_va_list.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/stdarg.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stdarg_va_list.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/stdarg.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stdarg_va_list.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_wchar_t.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_wchar_t.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_wchar_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_null.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_null.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_null.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_pthread/_pthread_types.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_intptr_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_uintptr_t.h \
@@ -159,7 +159,7 @@ CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/unwrap_ref.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/ratio \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/climits \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/limits.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/limits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/limits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/machine/limits.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/arm/limits.h \
@@ -284,10 +284,10 @@ CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__type_traits/is_callable.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/initializer_list \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/cstddef \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_header_macro.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_nullptr_t.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_max_align_t.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_offsetof.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_header_macro.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_nullptr_t.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_max_align_t.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_offsetof.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/byte.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__cstddef/max_align_t.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/__algorithm/in_out_result.h \
@@ -425,11 +425,11 @@ CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/wchar.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/wchar.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_wchar.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stdarg_header_macro.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stdarg___gnuc_va_list.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stdarg_va_arg.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stdarg___va_copy.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stdarg_va_copy.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stdarg_header_macro.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stdarg___gnuc_va_list.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stdarg_va_arg.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stdarg___va_copy.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stdarg_va_copy.h \
   /opt/homebrew/opt/llvm/bin/../include/c++/v1/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/stdio.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/_stdio.h \
@@ -913,7 +913,7 @@ CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_useconds_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_suseconds_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_rsize_t.h \
-  /opt/homebrew/Cellar/llvm/20.1.2/lib/clang/20/include/__stddef_rsize_t.h \
+  /opt/homebrew/Cellar/llvm/20.1.5/lib/clang/20/include/__stddef_rsize_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_errno_t.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_fd_def.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk/usr/include/sys/_types/_fd_setsize.h \

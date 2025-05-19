@@ -5,6 +5,17 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# Enable OpenMP
+find_package(OpenMP REQUIRED)
+
+# Set optimization flags
+if(APPLE)
+    # Enable NEON SIMD instructions on Apple Silicon
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native -mcpu=apple-m1")
+else()
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -march=native")
+endif()
+
 find_package(SDL3 REQUIRED)
 
 # Glad library setup
@@ -34,6 +45,9 @@ add_executable(${PROJECT_NAME} MACOSX_BUNDLE
     src/GUI/gui.cpp
     src/Graphics/shader.cpp
     src/Graphics/renderer.cpp
+    src/Graphics/Particle.cpp
+    src/Graphics/Simulation.cpp
+    src/Common.cpp
     ${IMGUI_SOURCES}
     ${IMGUI_BACKENDS_SOURCES}
 )
@@ -52,10 +66,12 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 target_link_libraries(${PROJECT_NAME} PRIVATE
     SDL3::SDL3
     glad
+    OpenMP::OpenMP_CXX
 )
 
 if(APPLE)
     target_link_libraries(${PROJECT_NAME} PRIVATE
         "-framework OpenGL"
+        "-framework Accelerate"
     )
 endif()

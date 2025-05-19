@@ -6,91 +6,106 @@
 	"config" : "Debug",
 	"cxx-modules" : {},
 	"database-info" : null,
-	"dir-cur-bld" : "/Users/redshifted/LifeSimulation/build",
-	"dir-cur-src" : "/Users/redshifted/LifeSimulation",
-	"dir-top-bld" : "/Users/redshifted/LifeSimulation/build",
-	"dir-top-src" : "/Users/redshifted/LifeSimulation",
+	"dir-cur-bld" : "/Users/redshifted/codes/LifeSimulation/build",
+	"dir-cur-src" : "/Users/redshifted/codes/LifeSimulation",
+	"dir-top-bld" : "/Users/redshifted/codes/LifeSimulation/build",
+	"dir-top-src" : "/Users/redshifted/codes/LifeSimulation",
 	"exports" : [],
 	"forward-modules-from-target-dirs" : [],
 	"include-dirs" : 
 	[
-		"/Users/redshifted/LifeSimulation/src",
-		"/Users/redshifted/LifeSimulation/src/core",
-		"/Users/redshifted/LifeSimulation/external/glad/include",
-		"/Users/redshifted/LifeSimulation/external/glm",
-		"/Users/redshifted/LifeSimulation/external/imgui",
-		"/Users/redshifted/LifeSimulation/external/imgui/backends",
+		"/Users/redshifted/codes/LifeSimulation/src",
+		"/Users/redshifted/codes/LifeSimulation/src/core",
+		"/Users/redshifted/codes/LifeSimulation/external/glad/include",
+		"/Users/redshifted/codes/LifeSimulation/external/glm",
+		"/Users/redshifted/codes/LifeSimulation/external/imgui",
+		"/Users/redshifted/codes/LifeSimulation/external/imgui/backends",
 		"/opt/homebrew/include"
 	],
 	"language" : "CXX",
 	"linked-target-dirs" : [],
-	"module-dir" : "/Users/redshifted/LifeSimulation/build/CMakeFiles/LifeSimulation.dir",
+	"module-dir" : "/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/LifeSimulation.dir",
 	"sources" : 
 	{
 		"CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/backends/imgui_impl_opengl3.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_opengl3.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/backends/imgui_impl_sdl3.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_sdl3.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/imgui.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/imgui.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/imgui_demo.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/imgui_demo.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/imgui_draw.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/imgui_draw.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/imgui_tables.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/imgui_tables.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/external/imgui/imgui_widgets.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/external/imgui/imgui_widgets.cpp"
+		},
+		"CMakeFiles/LifeSimulation.dir/src/Common.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/Common.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/src/GUI/gui.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/GUI/gui.cpp"
+		},
+		"CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/Graphics/Particle.cpp"
+		},
+		"CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o" : 
+		{
+			"language" : "CXX",
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/Graphics/Simulation.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/src/Graphics/renderer.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/Graphics/renderer.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/src/Graphics/shader.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/Graphics/shader.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/src/core/fps_counter.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/core/fps_counter.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/src/core/window.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/core/window.cpp"
 		},
 		"CMakeFiles/LifeSimulation.dir/src/main.cpp.o" : 
 		{
 			"language" : "CXX",
-			"source" : "/Users/redshifted/LifeSimulation/src/main.cpp"
+			"source" : "/Users/redshifted/codes/LifeSimulation/src/main.cpp"
 		}
 	}
 }
