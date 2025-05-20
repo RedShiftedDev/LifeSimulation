@@ -1,8 +1,9 @@
 # macOS system files
 .DS_Store
 
-# Ignore the LifeSimulation binary inside the .app bundle
-build/LifeSimulation.app/Contents/MacOS/LifeSimulation
+# Build directory - except the app
+build/*
+!build/LifeSimulation.app
 
 # CMake-generated files and folders
 CMakeFiles/
