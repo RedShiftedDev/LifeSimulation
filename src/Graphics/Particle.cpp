@@ -1,5 +1,7 @@
 #include "Particle.h"
+#include <cmath>
 #include <glm/gtc/matrix_transform.hpp>
+#include <random>
 #include <vector>
 #include "Graphics/Simulation.h"
 
@@ -13,8 +15,16 @@ bool Particle::initialized = false;
 size_t Particle::particleCount = 0;
 const size_t Particle::MAX_PARTICLES = 1000000; // 1M particles
 
+// Interaction simulation static members
+std::vector<std::vector<float>> Particle::interactionMatrix;
+int Particle::numParticleTypes = 6;                              // Default to 6 types
+float Particle::interactionRadius = 0.1f;                        // Max interaction radius (R_MAX)
+float Particle::frictionFactor = std::pow(0.5f, 0.02f / 0.040f); // From friction half-life
+const float Particle::BETA = 0.3f;                               // Repulsion parameter
+
 Particle::Particle()
-    : position(0.0F), velocity(0.0F), acceleration(0.0F), radius(5.0F), color(1.0F), active(true) {
+    : position(0.0F), velocity(0.0F), acceleration(0.0F), radius(5.0F), color(1.0F), active(true),
+      particleType(0) {
 
   if (!initialized) {
     initializeSharedResources();
@@ -35,7 +45,8 @@ Particle::Particle()
 
 Particle::Particle(const Particle &other)
     : position(other.position), velocity(other.velocity), acceleration(other.acceleration),
-      radius(other.radius), color(other.color), active(other.active) {
+      radius(other.radius), color(other.color), active(other.active),
+      particleType(other.particleType) {
 
   // Register this particle
   particleIndex = particleCount++;
@@ -58,6 +69,7 @@ Particle &Particle::operator=(const Particle &other) {
     radius = other.radius;
     color = other.color;
     active = other.active;
+    particleType = other.particleType;
 
     // Update instance data
     if (active) {
@@ -135,6 +147,9 @@ void Particle::initializeSharedResources() {
   glBindBuffer(GL_ARRAY_BUFFER, 0);
   glBindVertexArray(0);
 
+  // Initialize interaction matrix with default size
+  initInteractionMatrix(numParticleTypes);
+
   initialized = true;
 }
 
@@ -145,6 +160,7 @@ void Particle::cleanupSharedResources() {
     glDeleteBuffers(1, &instanceVBO);
     particleShader.reset();
     instanceData.clear();
+    interactionMatrix.clear();
     initialized = false;
     particleCount = 0;
   }
@@ -201,15 +217,47 @@ void Particle::renderAll(const glm::mat4 &projection) {
   glBindVertexArray(0);
 }
 
+void Particle::initInteractionMatrix(int numTypes) {
+  numParticleTypes = numTypes;
+  interactionMatrix.resize(numTypes, std::vector<float>(numTypes, 0.0f));
+
+  // Initialize with random values
+  randomizeInteractionMatrix();
+}
+
+void Particle::randomizeInteractionMatrix() {
+  // Create a random number generator
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_real_distribution<float> dist(-1.0f, 1.0f);
+
+  // Fill the matrix with random values between -1 and 1
+  for (int i = 0; i < numParticleTypes; ++i) {
+    for (int j = 0; j < numParticleTypes; ++j) {
+      interactionMatrix[i][j] = dist(gen);
+    }
+  }
+}
+
+float Particle::calculateForce(float r_norm, float a) {
+  if (r_norm < BETA) {
+    return r_norm / BETA - 1.0f;
+  } else if (BETA < r_norm && r_norm < 1.0f) {
+    return a * (1.0f - std::abs(2.0f * r_norm - 1.0f - BETA) / (1.0f - BETA));
+  } else {
+    return 0.0f;
+  }
+}
+
 void Particle::update(float deltaTime) {
   if (!active) {
     return;
   }
 
-  // Update physics
-  velocity += acceleration * deltaTime;
-  position += velocity * deltaTime;
+  // Reset acceleration (will be calculated from forces)
+  acceleration = glm::vec2(0.0f);
 
+  // If using the boundary handling from the original code
   if (simulation::enableBounds) {
     const float boundsX = ((simulation::boundaryRight - simulation::boundaryLeft) / 2) - radius;
     const float boundsY = ((simulation::boundaryBottom - simulation::boundaryTop) / 2) - radius;
@@ -230,6 +278,12 @@ void Particle::update(float deltaTime) {
       velocity.y *= -0.9F;
     }
   }
+
+  // Apply friction to velocity
+  velocity *= frictionFactor;
+
+  // Update position based on velocity
+  position += velocity * deltaTime;
 
   // Update instance data
   updateInstanceData();

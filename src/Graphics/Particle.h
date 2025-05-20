@@ -23,6 +23,11 @@ public:
   static void renderAll(const glm::mat4 &projection); // Render all particles
   static void updateAllInstanceData();                // Update GPU buffer with all particle data
 
+  // Interaction-based simulation methods
+  static void initInteractionMatrix(int numTypes);
+  static void randomizeInteractionMatrix();
+  static float calculateForce(float distance, float interactionStrength);
+
   // setters
   void setPos(const glm::vec2 &pos) {
     this->position = pos;
@@ -48,6 +53,11 @@ public:
     updateInstanceData();
   }
 
+  void setType(int type) {
+    this->particleType = type;
+    updateInstanceData();
+  }
+
   // getters
   [[nodiscard]] glm::vec2 getPos() const { return this->position; }
   [[nodiscard]] glm::vec2 getVel() const { return this->velocity; }
@@ -55,6 +65,36 @@ public:
   [[nodiscard]] float getSize() const { return this->radius; }
   [[nodiscard]] glm::vec3 getColor() const { return this->color; }
   [[nodiscard]] bool isActive() const { return this->active; }
+  [[nodiscard]] int getType() const { return this->particleType; }
+
+  // Access interaction matrix values
+  static float getInteractionStrength(int type1, int type2) {
+    if (type1 >= 0 && type1 < numParticleTypes && type2 >= 0 && type2 < numParticleTypes) {
+      return interactionMatrix[type1][type2];
+    }
+    return 0.0F;
+  }
+
+  static void setInteractionStrength(int type1, int type2, float strength) {
+    if (type1 >= 0 && type1 < numParticleTypes && type2 >= 0 && type2 < numParticleTypes) {
+      interactionMatrix[type1][type2] = strength;
+    }
+  }
+
+  static int getNumParticleTypes() { return numParticleTypes; }
+
+  static void setNumParticleTypes(int num) {
+    numParticleTypes = num;
+    initInteractionMatrix(numParticleTypes);
+  }
+
+  static float getInteractionRadius() { return interactionRadius; }
+
+  static void setInteractionRadius(float radius) { interactionRadius = radius; }
+
+  static float getFrictionFactor() { return frictionFactor; }
+
+  static void setFrictionFactor(float factor) { frictionFactor = factor; }
 
 private:
   glm::vec2 position;
@@ -64,6 +104,7 @@ private:
   glm::vec3 color;
   bool active;
   size_t particleIndex;
+  int particleType; // Added for particle interaction types
 
   // Update the instance data for this particle in the shared buffer
   void updateInstanceData();
@@ -77,4 +118,11 @@ private:
   static bool initialized;
   static size_t particleCount;
   static const size_t MAX_PARTICLES;
+
+  // Interaction simulation parameters
+  static std::vector<std::vector<float>> interactionMatrix;
+  static int numParticleTypes;
+  static float interactionRadius;
+  static float frictionFactor;
+  static const float BETA; // Repulsion parameter
 };

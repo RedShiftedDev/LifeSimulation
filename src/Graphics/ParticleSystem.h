@@ -13,6 +13,11 @@ public:
   void update(float deltaTime);
   static void render(const glm::mat4 &projection);
 
+  // Force calculation for particle interactions
+  void calculateInteractionForces(float deltaTime);
+  float getInteractionStrength(int type1, int type2);
+  void randomizeInteractions();
+
   // Particle creation and emission
   Particle &createParticle();
   void emitParticles(size_t count, const glm::vec2 &position, float radius,

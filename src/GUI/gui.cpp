@@ -29,7 +29,7 @@ void PerformanceWindow(const FpsCounter &fpsCounter) {
     ImGui::PopStyleColor();
 
     ImGui::NextColumn();
-    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.8f, 0.4f, 1.0f));
+    ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0F, 0.8F, 0.4F, 1.0F));
     ImGui::Text("Entities: %zu", simulation::particleCount);
     ImGui::PopStyleColor();
 
@@ -118,7 +118,7 @@ void RenderGui(const FpsCounter &fpsCounter) {
   // Create and Clear buttons
   ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2F, 0.7F, 0.2F, 1.0F));
   ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3F, 0.8F, 0.3F, 1.0F));
-  if (ImGui::Button("Create Particles", ImVec2(ImGui::GetContentRegionAvail().x * 0.5f, 0))) {
+  if (ImGui::Button("Create Particles", ImVec2(ImGui::GetContentRegionAvail().x * 0.5F, 0))) {
     simulation::shouldCreateParticles = true;
   }
   ImGui::PopStyleColor(2);
