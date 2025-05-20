@@ -47,6 +47,7 @@ add_executable(${PROJECT_NAME} MACOSX_BUNDLE
     src/Graphics/renderer.cpp
     src/Graphics/Particle.cpp
     src/Graphics/Simulation.cpp
+    src/Graphics/ParticleSystem.cpp
     src/Common.cpp
     ${IMGUI_SOURCES}
     ${IMGUI_BACKENDS_SOURCES}

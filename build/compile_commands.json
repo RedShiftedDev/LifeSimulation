@@ -55,6 +55,12 @@
 },
 {
   "directory": "/Users/redshifted/codes/LifeSimulation/build",
+  "command": "/opt/homebrew/opt/llvm/bin/clang++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include  -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp @CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.modmap -o CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o -c /Users/redshifted/codes/LifeSimulation/src/Graphics/ParticleSystem.cpp",
+  "file": "/Users/redshifted/codes/LifeSimulation/src/Graphics/ParticleSystem.cpp",
+  "output": "CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o"
+},
+{
+  "directory": "/Users/redshifted/codes/LifeSimulation/build",
   "command": "/opt/homebrew/opt/llvm/bin/clang++ -DIMGUI_IMPL_OPENGL_LOADER_GLAD -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include  -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp @CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.modmap -o CMakeFiles/LifeSimulation.dir/src/Common.cpp.o -c /Users/redshifted/codes/LifeSimulation/src/Common.cpp",
   "file": "/Users/redshifted/codes/LifeSimulation/src/Common.cpp",
   "output": "CMakeFiles/LifeSimulation.dir/src/Common.cpp.o"

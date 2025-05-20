@@ -6,7 +6,7 @@
 Window::Window(const char *title, const int width, const int height) {
   windowTitle = title;
 
-  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0) {
+  if (static_cast<int>(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)) < 0) {
     throw std::runtime_error("Failed to initialize SDL");
   }
 

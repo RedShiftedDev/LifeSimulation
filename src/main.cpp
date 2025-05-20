@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Common.h"
 #include "GUI/gui.h"
-#include "Graphics/Particle.h"
+#include "Graphics/ParticleSystem.h"
 #include "Graphics/Simulation.h"
 #include "Graphics/renderer.h"
 #include "core/fps_counter.h"
@@ -66,17 +66,10 @@ int main() {
 
     auto lastFrameTime = std::chrono::high_resolution_clock::now();
 
-    std::vector<Particle> particles;
-
-    // Add one initial particle
-    Particle initialParticle;
-    initialParticle.setPos(glm::vec2(0.0F, 0.0F));
-    initialParticle.setVel(glm::vec2(100.0F, 120.0F));
-    initialParticle.setAcc(glm::vec2(0.0F, -0.01F));
-    particles.push_back(initialParticle);
+    ParticleSystem particleSystem(1000000);
 
     // Initialize particle count
-    simulation::particleCount = 1;
+    simulation::particleCount = 0;
 
     // Main loop
     while (!window.shouldClose()) {
@@ -93,45 +86,35 @@ int main() {
 
       window.pollEvents();
 
-      // Handle particle spawning
-      float mouseX;
-      float mouseY;
-      Uint32 mouseState = SDL_GetMouseState(&mouseX, &mouseY);
-
-      // GUI-based particle creation
-      if (gui::ShouldCreateParticle() && !ImGui::GetIO().WantCaptureMouse) {
-        // Here you'd create a new particle based on mouse position
-        // For now we'll just increment the counter
-        simulation::particleCount++;
-      }
-
       ImGui_ImplOpenGL3_NewFrame();
       ImGui_ImplSDL3_NewFrame();
       ImGui::NewFrame();
 
       gui::RenderGui(fpsCounter);
 
-      if (gui::ShouldCreateParticle()) {
-        Particle newParticle;
-        float randX = static_cast<float>((rand() % 600) - 300);
-        float randY = static_cast<float>((rand() % 600) - 300);
-        newParticle.setPos(glm::vec2(randX, randY));
-        float randVX = static_cast<float>((rand() % 100) - 50) * 10.0F;
-        float randVY = static_cast<float>((rand() % 100) - 50) * 10.0F;
-        newParticle.setVel(glm::vec2(randVX, randVY));
-        newParticle.setAcc(glm::vec2(0.0F, -0.01F));
-        float r = static_cast<float>(rand() % 255) / 255.0F;
-        float g = static_cast<float>(rand() % 255) / 255.0F;
-        float b = static_cast<float>(rand() % 255) / 255.0F;
-        newParticle.setColor(glm::vec3(r, g, b));
-        particles.push_back(newParticle);
-        simulation::particleCount = particles.size();
+      if (simulation::shouldCreateParticles) {
+        int newParticles = simulation::desiredParticleCount;
+        for (int i = 0; i < newParticles; i++) {
+          float randX = static_cast<float>((rand() % 1000) - 500);
+          float randY = static_cast<float>((rand() % 1000) - 500);
+          float randVX = static_cast<float>((rand() % 100) - 50);
+          float randVY = static_cast<float>((rand() % 100) - 50);
+          particleSystem.emitParticles(1, glm::vec2(randX, randY), 10.0F, 5.0F, glm::vec2(randVX, randVY));
+        }
+        simulation::particleCount = particleSystem.getParticleCount();
+        simulation::shouldCreateParticles = false;
+      }
+
+      if (simulation::shouldClearParticles) {
+        particleSystem.clear();
+        simulation::particleCount = 0;
+        simulation::desiredParticleCount = 0;
+        glClear(GL_COLOR_BUFFER_BIT);
+        simulation::shouldClearParticles = false;
       }
 
       // Update particle physics
-      for (auto &particle : particles) {
-        particle.update(deltaTime);
-      }
+      particleSystem.update(deltaTime);
 
       // Set and clear background color
       glClearColor(glBackgroundColour.r, glBackgroundColour.g, glBackgroundColour.b,
@@ -141,9 +124,7 @@ int main() {
       ImGui::Render();
 
       // Render all particles
-      for (auto &particle : particles) {
-        particle.render(projection);
-      }
+      ParticleSystem::render(projection);
 
       ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
       window.swapBuffers();

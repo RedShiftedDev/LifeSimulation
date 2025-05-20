@@ -6,7 +6,6 @@
 #include "core/system_utils.h"
 
 namespace gui {
-bool buttonWasClicked = false;
 
 void PerformanceWindow(const FpsCounter &fpsCounter) {
   // Performance metrics section
@@ -81,7 +80,7 @@ void RenderGui(const FpsCounter &fpsCounter) {
 
   // Title
   ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[0]);
-  ImGui::TextColored(ImVec4(0.4f, 0.8f, 1.0f, 1.0f), "Particle System");
+  ImGui::TextColored(ImVec4(0.4F, 0.8F, 1.0F, 1.0F), "Particle System");
   ImGui::PopFont();
   ImGui::Spacing();
 
@@ -106,17 +105,37 @@ void RenderGui(const FpsCounter &fpsCounter) {
   }
   ImGui::PopStyleColor();
 
-  // Create Particle button with direct debug feedback
-  buttonWasClicked = false;
-  if (ImGui::Button("Create Particle")) {
-    simulation::createParticle = true;
-    buttonWasClicked = true;
-  }
+  // Particle Control Section
   ImGui::Spacing();
+  ImGui::TextColored(ImVec4(0.4F, 0.8F, 1.0F, 1.0F), "Particle Controls");
+  ImGui::Separator();
+
+  // Particle count input
+  ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1F, 0.1F, 0.2F, 1.0F));
+  ImGui::DragInt("Desired Particle Count", &simulation::desiredParticleCount, 1, 0, 100000);
+  ImGui::PopStyleColor();
+
+  // Create and Clear buttons
+  ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.2F, 0.7F, 0.2F, 1.0F));
+  ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3F, 0.8F, 0.3F, 1.0F));
+  if (ImGui::Button("Create Particles", ImVec2(ImGui::GetContentRegionAvail().x * 0.5f, 0))) {
+    simulation::shouldCreateParticles = true;
+  }
+  ImGui::PopStyleColor(2);
+
+  ImGui::SameLine();
+
+  ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.7F, 0.2F, 0.2F, 1.0F));
+  ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.8F, 0.3F, 0.3F, 1.0F));
+  if (ImGui::Button("Clear Particles", ImVec2(ImGui::GetContentRegionAvail().x, 0))) {
+    simulation::shouldClearParticles = true;
+  }
+  ImGui::PopStyleColor(2);
+
+  // Display current particle count
   ImGui::TextColored(ImVec4(0.9F, 0.9F, 0.9F, 1.0F), "Active Particles:");
   ImGui::SameLine();
   ImGui::TextColored(ImVec4(0.4F, 0.8F, 1.0F, 1.0F), "%zu", simulation::particleCount);
-
   // Collision Settings
   ImGui::Spacing();
   if (ImGui::CollapsingHeader("Collision Settings", ImGuiTreeNodeFlags_DefaultOpen)) {
@@ -154,12 +173,12 @@ void RenderGui(const FpsCounter &fpsCounter) {
 }
 
 bool ShouldCreateParticle() {
-  // Debug output to track flag state
   bool result = simulation::createParticle;
   if (result) {
     simulation::createParticle = false;
   }
   return result;
+  simulation::particleCount++;
 }
 
 void ResetParticleCreation() { simulation::createParticle = false; }
