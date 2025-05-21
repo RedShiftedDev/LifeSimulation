@@ -1,36 +1,46 @@
 #include "ParticleSystem.h"
 #include <algorithm>
+#include <arm_neon.h>
 #include <cmath>
-#include <random>
+#include <dispatch/dispatch.h>
+#include <omp.h>
 #include "Graphics/Simulation.h"
 
-ParticleSystem::ParticleSystem(size_t maxParticles) : maxParticles(maxParticles) {
-  // Reserve space for particles
-  particles.reserve(maxParticles);
+std::vector<glm::vec2> ParticleSystem::previousForces;
+std::mutex ParticleSystem::previousForcesMutex;
 
-  // Initialize shared particle resources
+ParticleSystem::ParticleSystem(size_t maxParticles) : maxParticles(maxParticles) {
+  particles.reserve(maxParticles);
   Particle::initializeSharedResources();
 }
 
 ParticleSystem::~ParticleSystem() {
-  // Clean up particles
   particles.clear();
-
-  // Clean up shared resources when the system is destroyed
   Particle::cleanupSharedResources();
 }
 
 void ParticleSystem::update(float deltaTime) {
-  // Calculate interaction forces between particles
-  calculateInteractionForces(deltaTime);
+  const size_t PARTICLE_THRESHOLD = 100;
 
-  // Process physics updates and handle lifecycle for all particles
-  for (auto &particle : particles) {
-    particle.update(deltaTime);
+  if (particles.size() > PARTICLE_THRESHOLD) {
+    calculateInteractionForces(deltaTime);
+  } else if (!particles.empty()) {
+    simplifiedForceCalculation(deltaTime);
   }
 
-  // Optional: Remove inactive particles (if your implementation supports this)
-  // This is more efficient than removing individual particles throughout the frame
+  const size_t BATCH_SIZE = 1024;
+
+  if (particles.size() > BATCH_SIZE) {
+#pragma omp parallel for schedule(static)
+    for (int i = 0; i < static_cast<int>(particles.size()); ++i) {
+      particles[i].update(deltaTime);
+    }
+  } else {
+    for (auto &particle : particles) {
+      particle.update(deltaTime);
+    }
+  }
+
   if (autoRemoveInactive) {
     particles.erase(std::remove_if(particles.begin(), particles.end(),
                                    [](const Particle &p) { return !p.isActive(); }),
@@ -38,154 +48,236 @@ void ParticleSystem::update(float deltaTime) {
   }
 }
 
+void ParticleSystem::simplifiedForceCalculation(float deltaTime) {
+  size_t n = particles.size();
+
+  struct ParticleData {
+    glm::vec2 position;
+    int type;
+    bool active;
+  };
+
+  alignas(16) std::vector<ParticleData> particleData(n);
+  alignas(16) std::vector<glm::vec2> forces(n, glm::vec2(0.0F));
+
+  for (size_t i = 0; i < n; ++i) {
+    particleData[i].position = particles[i].getPos();
+    particleData[i].type = particles[i].getType();
+    particleData[i].active = particles[i].isActive();
+  }
+
+#pragma omp parallel for schedule(static)
+  for (int ii = 0; ii < static_cast<int>(n); ++ii) {
+    if (!particleData[ii].active) {
+      continue;
+    }
+
+    glm::vec2 totalForce(0.0F);
+    const glm::vec2 pos_i = particleData[ii].position;
+    const int type_i = particleData[ii].type;
+
+    for (size_t jj = 0; jj < n; ++jj) {
+      if (ii == static_cast<int>(jj) || !particleData[jj].active) {
+        continue;
+      }
+
+      const glm::vec2 pos_j = particleData[jj].position;
+      glm::vec2 distVec = pos_j - pos_i;
+
+      float distSqr = glm::dot(distVec, distVec);
+      if (distSqr < 2.5F || distSqr >= R_MAX_SQR) {
+        continue;
+      }
+
+      float invDist = 1.0F / std::sqrt(distSqr);
+      float distance = distSqr * invDist;
+      float interaction = Particle::getInteractionStrength(type_i, particleData[jj].type);
+      float normDist = distance * invRMax;
+      float forceMag = Particle::calculateForce(normDist, interaction);
+
+      totalForce += distVec * (forceMag * invDist);
+    }
+
+    forces[ii] = totalForce * R_MAX;
+  }
+
+#pragma omp parallel for schedule(static)
+  for (int ii = 0; ii < static_cast<int>(n); ++ii) {
+    if (!particleData[ii].active) {
+      continue;
+    }
+    glm::vec2 newVel = particles[ii].getVel() + forces[ii] * deltaTime;
+    particles[ii].setVel(newVel);
+  }
+}
+
 void ParticleSystem::calculateInteractionForces(float deltaTime) {
-  const float R_MAX = 200.0F;
-  const float gridCellSize = R_MAX;
-  const float invRMax = 1.0F / R_MAX;
-  const float R_MAX_SQR = R_MAX * R_MAX;
-  auto hashCell = [](int x, int y) -> size_t {
-    return static_cast<size_t>((x * 73856093) ^ (y * 19349663));
-  };
-  struct GridCell {
-    std::vector<size_t> particleIndices;
-  };
+  const int gridWidth =
+      std::ceil((simulation::boundaryRight - simulation::boundaryLeft) / gridCellSize);
+  const int gridHeight =
+      std::ceil((simulation::boundaryBottom - simulation::boundaryTop) / gridCellSize);
+
+  std::vector<std::vector<size_t>> grid(gridWidth * gridHeight);
   std::vector<size_t> activeParticles;
-  activeParticles.reserve(particles.size());
-  struct ParticleGridInfo {
-    int cellX;
-    int cellY;
-  };
-  std::vector<ParticleGridInfo> particleGridInfo(particles.size());
-  std::unordered_map<size_t, GridCell> grid;
+  std::vector<int> cellX(particles.size());
+  std::vector<int> cellY(particles.size());
+
+  populateSpatialGrid(grid, activeParticles, cellX, cellY, gridWidth, gridHeight);
+
+  std::vector<glm::vec2> forceBuffer(particles.size(), glm::vec2(0.0f));
+
+  computeInteractionForcesOMP(grid, activeParticles, cellX, cellY, forceBuffer, gridWidth,
+                              gridHeight);
+  applyForcesOMP(activeParticles, forceBuffer, deltaTime);
+}
+
+void ParticleSystem::populateSpatialGrid(std::vector<std::vector<size_t>> &grid,
+                                         std::vector<size_t> &activeParticles,
+                                         std::vector<int> &cellX, std::vector<int> &cellY,
+                                         int gridWidth, int gridHeight) {
+
   for (size_t i = 0; i < particles.size(); ++i) {
     if (!particles[i].isActive()) {
       continue;
     }
+
     activeParticles.push_back(i);
+
     const glm::vec2 &pos = particles[i].getPos();
-    int cellX = static_cast<int>(std::floor(pos.x / gridCellSize));
-    int cellY = static_cast<int>(std::floor(pos.y / gridCellSize));
-    size_t cellHash = hashCell(cellX, cellY);
-    particleGridInfo[i].cellX = cellX;
-    particleGridInfo[i].cellY = cellY;
-    grid[cellHash].particleIndices.push_back(i);
+    int x = std::clamp(static_cast<int>((pos.x - simulation::boundaryLeft) / gridCellSize), 0,
+                       gridWidth - 1);
+    int y = std::clamp(static_cast<int>((pos.y - simulation::boundaryTop) / gridCellSize), 0,
+                       gridHeight - 1);
+
+    cellX[i] = x;
+    cellY[i] = y;
+    grid[(y * gridWidth) + x].push_back(i);
   }
-  std::vector<glm::vec2> forceBuffer(particles.size(), glm::vec2(0.0F));
-#pragma omp parallel for schedule(dynamic, 64)
-  for (int idx = 0; idx < static_cast<int>(activeParticles.size()); ++idx) {
+}
+
+void ParticleSystem::computeInteractionForcesOMP(const std::vector<std::vector<size_t>> &grid,
+                                                 const std::vector<size_t> &activeParticles,
+                                                 const std::vector<int> &cellX,
+                                                 const std::vector<int> &cellY,
+                                                 std::vector<glm::vec2> &forceBuffer, int gridWidth,
+                                                 int gridHeight) {
+
+#pragma omp parallel for schedule(static)
+  for (size_t idx = 0; idx < activeParticles.size(); ++idx) {
     size_t i = activeParticles[idx];
     glm::vec2 totalForce(0.0F);
     const glm::vec2 &pos_i = particles[i].getPos();
     int type_i = particles[i].getType();
-    int cellX = particleGridInfo[i].cellX;
-    int cellY = particleGridInfo[i].cellY;
-    for (int dx = -1; dx <= 1; ++dx) {
-      for (int dy = -1; dy <= 1; ++dy) {
-        size_t neighborHash = hashCell(cellX + dx, cellY + dy);
-        auto it = grid.find(neighborHash);
-        if (it == grid.end()) {
+    int x = cellX[i];
+    int y = cellY[i];
+
+    for (int dy = -1; dy <= 1; ++dy) {
+      for (int dx = -1; dx <= 1; ++dx) {
+        int nx = x + dx;
+        int ny = y + dy;
+        if (nx < 0 || ny < 0 || nx >= gridWidth || ny >= gridHeight) {
           continue;
         }
-        const auto &cellParticles = it->second.particleIndices;
-        for (size_t j : cellParticles) {
-          if (i == j || !particles[j].isActive()) {
+        const std::vector<unsigned long> &cell = grid[(ny * gridWidth) + nx];
+        for (size_t j : cell) {
+          glm::vec2 dist = particles[j].getPos() - pos_i;
+          float invDist;
+          float normDist;
+          float interaction;
+          float forceMag;
+
+          if (!shouldComputeForce(i, j, particles, dist, invDist, normDist, interaction, forceMag,
+                                  type_i)) {
             continue;
           }
-          const glm::vec2 &pos_j = particles[j].getPos();
-          glm::vec2 distVec = pos_j - pos_i;
-          float distSqr = glm::dot(distVec, distVec);
-          if (distSqr < 2.5F || distSqr >= R_MAX_SQR) {
-            continue;
-          }
-          float distance = std::sqrt(distSqr);
-          float interaction = getInteractionStrength(type_i, particles[j].getType());
-          float normDist = distance * invRMax;
-          float forceMag = Particle::calculateForce(normDist, interaction);
-          glm::vec2 forceDir = distVec * (1.0F / distance);
-          totalForce += forceDir * forceMag;
+
+          totalForce += dist * (forceMag * invDist);
         }
       }
     }
     forceBuffer[i] = totalForce * R_MAX;
   }
-#pragma omp parallel for
-  for (int idx = 0; idx < static_cast<int>(activeParticles.size()); ++idx) {
+}
+
+bool ParticleSystem::shouldComputeForce(size_t i, size_t j, const std::vector<Particle> &particles,
+                                        const glm::vec2 &dist, float &invDist, float &normDist,
+                                        float &interaction, float &forceMag, int type_i) const {
+  if (i == j || !particles[j].isActive()) {
+    return false;
+  }
+
+  float distSqr = glm::dot(dist, dist);
+  if (distSqr < 2.5F || distSqr >= R_MAX_SQR) {
+    return false;
+  }
+
+  invDist = 1.0F / std::sqrt(distSqr);
+  float distance = distSqr * invDist;
+  normDist = distance * invRMax;
+
+  interaction = getInteractionStrength(type_i, particles[j].getType());
+  forceMag = Particle::calculateForce(normDist, interaction);
+
+  return true;
+}
+
+void ParticleSystem::applyForcesOMP(const std::vector<size_t> &activeParticles,
+                                    const std::vector<glm::vec2> &forceBuffer, float deltaTime) {
+#pragma omp parallel for schedule(static)
+  for (size_t idx = 0; idx < activeParticles.size(); ++idx) {
     size_t i = activeParticles[idx];
-    glm::vec2 newVel = particles[i].getVel() + forceBuffer[i] * deltaTime;
-    particles[i].setVel(newVel);
+    particles[i].setVel(particles[i].getVel() + forceBuffer[i] * deltaTime);
   }
 }
 
-void ParticleSystem::render(const glm::mat4 &projection) {
-  // Render all particles at once using instanced rendering
-  Particle::renderAll(projection);
-}
+void ParticleSystem::render(const glm::mat4 &projection) { Particle::renderAll(projection); }
 
 Particle &ParticleSystem::createParticle() {
-  // Create a new particle if we haven't reached the limit
   if (particles.size() < maxParticles) {
+    if (particles.capacity() == particles.size()) {
+      size_t newCapacity = particles.capacity() * 2;
+      newCapacity = std::min(newCapacity, maxParticles);
+      particles.reserve(newCapacity);
+    }
     particles.emplace_back();
     return particles.back();
   }
 
-  // If we reached the limit, recycle an inactive particle
-  for (auto &particle : particles) {
-    if (!particle.isActive()) {
-      return particle; // Return inactive particle without resetting its state
+  static std::vector<size_t> inactiveIndices;
+
+  static uint64_t lastRebuildTime = 0;
+  uint64_t currentTime = dispatch_time(0, 0);
+
+  if (inactiveIndices.empty() || currentTime - lastRebuildTime > 1000000000) { // ~1 second
+    inactiveIndices.clear();
+    for (size_t i = 0; i < particles.size(); i++) {
+      if (!particles[i].isActive()) {
+        inactiveIndices.push_back(i);
+      }
     }
+    lastRebuildTime = currentTime;
   }
 
-  // If all particles are active, cycle to the next one without resetting its properties
+  if (!inactiveIndices.empty()) {
+    size_t index = inactiveIndices.back();
+    inactiveIndices.pop_back();
+    particles[index].setActive(true);
+    return particles[index];
+  }
+
   size_t index = nextParticleIndex % particles.size();
   nextParticleIndex++;
-  return particles[index]; // Return existing particle without resetting its state
-}
-
-void ParticleSystem::emitParticles(size_t count, const glm::vec2 &position, float radius,
-                                   [[maybe_unused]] float lifetime, const glm::vec2 &velocity) {
-  // Create random number generator for particle types
-  std::random_device rd;
-  std::mt19937 gen(rd());
-  std::uniform_int_distribution<int> typeDist(0, 5); // 6 particle types (0-5)
-
-  for (size_t i = 0; i < count; ++i) {
-    // Create new particle
-    if (particles.size() < maxParticles) {
-      particles.emplace_back();
-      Particle &particle = particles.back();
-
-      particle.setActive(true);
-      particle.setPos(position);
-      particle.setRadius(radius);
-
-      // Set new velocity
-      float velX = velocity.x;
-      float velY = velocity.y;
-      particle.setVel(glm::vec2(velX, velY));
-
-      // Set random type (0-5)
-      int particleType = typeDist(gen);
-      particle.setType(particleType);
-
-      // Set color based on type (using simulation::COLORS or your own color mapping)
-      particle.setColor(simulation::COLORS[particleType % simulation::COLORS.size()]);
-    }
-  }
+  return particles[index];
 }
 
 float ParticleSystem::getInteractionStrength(int type1, int type2) {
-  // Access the interaction matrix from the Particle class
   return Particle::getInteractionStrength(type1, type2);
 }
 
-void ParticleSystem::randomizeInteractions() {
-  // Call the static method in Particle to randomize the interaction matrix
-  Particle::randomizeInteractionMatrix();
-}
+void ParticleSystem::randomizeInteractions() { Particle::randomizeInteractionMatrix(); }
 
 void ParticleSystem::clear() {
   particles.clear();
-  // Reset particle count in the static Particle class
   Particle::cleanupSharedResources();
   Particle::initializeSharedResources();
 }

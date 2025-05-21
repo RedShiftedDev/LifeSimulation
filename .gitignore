@@ -1,27 +1,5 @@
-# macOS system files
 .DS_Store
-
-# Build directory - except the app
-build/*
-!build/LifeSimulation.app
-
-# CMake-generated files and folders
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-
-# Clang tools
-clang-tidy.cache
-clangd/
-
-# Cache folder (if generated)
+build/
 .cache/
-
-# IDE/editor folders
 .vscode/
 .idea/
-
-# Logs and temporary files
-*.log
-*.tmp

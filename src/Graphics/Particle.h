@@ -1,9 +1,36 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <limits>
 #include <memory>
+#include <unordered_map>
 #include <vector>
+#include "Graphics/Simulation.h"
 #include "Graphics/shader.h"
+
+struct InteractionMatrixCache {
+  float values[16][16];
+  int size;
+};
+
+static thread_local InteractionMatrixCache interactionCache = {{0}, 0};
+
+struct ColorHash {
+  std::size_t operator()(const glm::vec3 &color) const {
+    std::size_t h1 = std::hash<float>{}(color.r);
+    std::size_t h2 = std::hash<float>{}(color.g);
+    std::size_t h3 = std::hash<float>{}(color.b);
+    return h1 ^ (h2 << 1) ^ (h3 << 2);
+  }
+};
+
+struct ColorEqual {
+  bool operator()(const glm::vec3 &a, const glm::vec3 &b) const {
+    const float EPSILON = 0.0001F;
+    return std::abs(a.r - b.r) < EPSILON && std::abs(a.g - b.g) < EPSILON &&
+           std::abs(a.b - b.b) < EPSILON;
+  }
+};
 
 class Particle {
 public:
@@ -12,31 +39,24 @@ public:
   Particle &operator=(const Particle &other);
   ~Particle();
 
-  void init();                              // Initialize particle (mostly for compatibility)
-  void cleanup();                           // Deactivate particle
-  void render(const glm::mat4 &projection); // Individual render (not used in this implementation)
-  void update(float deltaTime);             // Update particle state
+  void cleanup();
+  void update(float deltaTime);
+  static void updateAll(std::vector<Particle> &particles, float deltaTime);
 
-  // Static methods for batch operations
-  static void initializeSharedResources();            // Initialize shared OpenGL resources
-  static void cleanupSharedResources();               // Clean up shared OpenGL resources
-  static void renderAll(const glm::mat4 &projection); // Render all particles
-  static void updateAllInstanceData();                // Update GPU buffer with all particle data
+  static void initializeSharedResources();
+  static void cleanupSharedResources();
+  static void renderAll(const glm::mat4 &projection);
+  static void updateAllInstanceData();
 
-  // Interaction-based simulation methods
   static void initInteractionMatrix(int numTypes);
   static void randomizeInteractionMatrix();
-  static float calculateForce(float distance, float interactionStrength);
+  static float calculateForce(float r_norm, float a);
 
   // setters
   void setPos(const glm::vec2 &pos) {
     this->position = pos;
     updateInstanceData();
   }
-
-  void setVel(const glm::vec2 &vel) { this->velocity = vel; }
-
-  void setAcc(const glm::vec2 &acc) { this->acceleration = acc; }
 
   void setRadius(const float radius) {
     this->radius = radius;
@@ -53,10 +73,8 @@ public:
     updateInstanceData();
   }
 
-  void setType(int type) {
-    this->particleType = type;
-    updateInstanceData();
-  }
+  void setVel(const glm::vec2 &vel) { this->velocity = vel; }
+  void setAcc(const glm::vec2 &acc) { this->acceleration = acc; }
 
   // getters
   [[nodiscard]] glm::vec2 getPos() const { return this->position; }
@@ -65,12 +83,61 @@ public:
   [[nodiscard]] float getSize() const { return this->radius; }
   [[nodiscard]] glm::vec3 getColor() const { return this->color; }
   [[nodiscard]] bool isActive() const { return this->active; }
-  [[nodiscard]] int getType() const { return this->particleType; }
 
-  // Access interaction matrix values
+  [[nodiscard]] int getType() const {
+    static thread_local std::unordered_map<glm::vec3, int, ColorHash> colorTypeCache;
+    auto it = colorTypeCache.find(color);
+    if (it != colorTypeCache.end()) {
+      return it->second;
+    }
+    int closestColorIndex = 0;
+    float minDistance = std::numeric_limits<float>::max();
+
+    for (int i = 0; i < simulation::COLORS.size() && i < numParticleTypes; ++i) {
+      const auto &refColor = simulation::COLORS[i];
+      float dx = color.r - refColor.r;
+      float dy = color.g - refColor.g;
+      float dz = color.b - refColor.b;
+      float distanceSquared = (dx * dx) + (dy * dy) + (dz * dz);
+
+      if (distanceSquared < minDistance) {
+        minDistance = distanceSquared;
+        closestColorIndex = i;
+      }
+
+      if (minDistance < 0.0001F) {
+        break;
+      }
+    }
+
+    if (colorTypeCache.size() > 100) {
+      colorTypeCache.clear();
+    }
+    colorTypeCache[color] = closestColorIndex;
+
+    return closestColorIndex;
+  }
+
+  void setType(int type) {
+    if (type >= 0 && type < numParticleTypes && type < simulation::COLORS.size()) {
+      this->color = simulation::COLORS[type];
+      updateInstanceData();
+    }
+  }
+
   static float getInteractionStrength(int type1, int type2) {
-    if (type1 >= 0 && type1 < numParticleTypes && type2 >= 0 && type2 < numParticleTypes) {
-      return interactionMatrix[type1][type2];
+    if (interactionCache.size != numParticleTypes) {
+      interactionCache.size = numParticleTypes;
+      for (int i = 0; i < numParticleTypes && i < 16; i++) {
+        for (int j = 0; j < numParticleTypes && j < 16; j++) {
+          interactionCache.values[i][j] = interactionMatrix[i][j];
+        }
+      }
+    }
+
+    if (type1 >= 0 && type1 < numParticleTypes && type1 < 16 && type2 >= 0 &&
+        type2 < numParticleTypes && type2 < 16) {
+      return interactionCache.values[type1][type2];
     }
     return 0.0F;
   }
@@ -81,19 +148,15 @@ public:
     }
   }
 
-  static int getNumParticleTypes() { return numParticleTypes; }
-
   static void setNumParticleTypes(int num) {
     numParticleTypes = num;
     initInteractionMatrix(numParticleTypes);
   }
 
+  static int getNumParticleTypes() { return numParticleTypes; }
   static float getInteractionRadius() { return interactionRadius; }
-
   static void setInteractionRadius(float radius) { interactionRadius = radius; }
-
   static float getFrictionFactor() { return frictionFactor; }
-
   static void setFrictionFactor(float factor) { frictionFactor = factor; }
 
 private:
@@ -104,25 +167,21 @@ private:
   glm::vec3 color;
   bool active;
   size_t particleIndex;
-  int particleType; // Added for particle interaction types
 
-  // Update the instance data for this particle in the shared buffer
   void updateInstanceData();
 
-  // Shared resources for all particles
-  static unsigned int quadVAO;
-  static unsigned int quadVBO;
-  static unsigned int instanceVBO;
+  static GLuint quadVAO;
+  static GLuint quadVBO;
+  static GLuint instanceVBO;
   static std::unique_ptr<Shader> particleShader;
   static std::vector<glm::vec4> instanceData;
   static bool initialized;
   static size_t particleCount;
   static const size_t MAX_PARTICLES;
 
-  // Interaction simulation parameters
   static std::vector<std::vector<float>> interactionMatrix;
   static int numParticleTypes;
   static float interactionRadius;
   static float frictionFactor;
-  static const float BETA; // Repulsion parameter
+  static const float BETA;
 };

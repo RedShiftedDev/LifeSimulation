@@ -51,6 +51,7 @@ build cmake_object_order_depends_target_glad: phony || .
 
 build CMakeFiles/glad.dir/external/glad/src/glad.c.o: C_COMPILER__glad_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/glad/src/glad.c || cmake_object_order_depends_target_glad
   CONFIG = Debug
+  DEFINES = -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/glad.dir/external/glad/src/glad.c.o.d
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/external/glad/include
@@ -84,347 +85,158 @@ build libglad.a: C_STATIC_LIBRARY_LINKER__glad_Debug CMakeFiles/glad.dir/externa
 
 build cmake_object_order_depends_target_LifeSimulation: phony || cmake_object_order_depends_target_glad
 
-build CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/main.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/main.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/main.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/main.cpp | CMakeFiles/LifeSimulation.dir/src/main.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/main.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/main.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/main.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/main.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/core/window.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/core/window.cpp | CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/core/window.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/core
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/core/fps_counter.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/core/fps_counter.cpp | CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/core/fps_counter.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/core
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/GUI/gui.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/GUI/gui.cpp | CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/GUI/gui.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/GUI
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/shader.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/shader.cpp | CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/shader.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/Graphics
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/renderer.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/renderer.cpp | CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/renderer.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/Graphics
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/Particle.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/Particle.cpp | CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/Particle.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/Graphics
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/Simulation.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/Simulation.cpp | CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/Simulation.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/Graphics
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/ParticleSystem.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/ParticleSystem.cpp | CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/Graphics/ParticleSystem.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src/Graphics
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/src/Common.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/src/Common.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/src/Common.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/src/Common.cpp | CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/src/Common.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/src/Common.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/src
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_draw.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_draw.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_draw.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_tables.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_tables.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_tables.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_widgets.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_widgets.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_demo.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_demo.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/imgui_demo.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_sdl3.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_sdl3.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_sdl3.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui/backends
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
 
-build CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.ddi: CXX_SCAN__LifeSimulation_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_LifeSimulation
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
-  DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.ddi.d
-  DYNDEP_INTERMEDIATE_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.ddi
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
-  INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
-  OBJ_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o
-  PREPROCESSED_OUTPUT_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.ddi.i
-
-build CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o: CXX_COMPILER__LifeSimulation_scanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_opengl3.cpp | CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.modmap || cmake_object_order_depends_target_LifeSimulation CMakeFiles/LifeSimulation.dir/CXX.dd
+build CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o: CXX_COMPILER__LifeSimulation_unscanned_Debug /Users/redshifted/codes/LifeSimulation/external/imgui/backends/imgui_impl_opengl3.cpp || cmake_object_order_depends_target_LifeSimulation
   CONFIG = Debug
-  DEFINES = -DIMGUI_IMPL_OPENGL_LOADER_GLAD
+  DEFINES = -DGLM_FORCE_SIMD_AVX2 -DIMGUI_IMPL_OPENGL_LOADER_GLAD -DUSE_APPLE_SILICON=1
   DEP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.d
-  DYNDEP_MODULE_MAP_FILE = CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.modmap
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -fopenmp=libomp
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   INCLUDES = -I/Users/redshifted/codes/LifeSimulation/src -I/Users/redshifted/codes/LifeSimulation/src/core -I/Users/redshifted/codes/LifeSimulation/external/glad/include -I/Users/redshifted/codes/LifeSimulation/external/glm -I/Users/redshifted/codes/LifeSimulation/external/imgui -I/Users/redshifted/codes/LifeSimulation/external/imgui/backends -I/opt/homebrew/include
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   OBJECT_FILE_DIR = CMakeFiles/LifeSimulation.dir/external/imgui/backends
-  dyndep = CMakeFiles/LifeSimulation.dir/CXX.dd
-
-build CMakeFiles/LifeSimulation.dir/CXX.dd | /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/LifeSimulation.dir/CXXModules.json CMakeFiles/LifeSimulation.dir/src/main.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.modmap CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.modmap CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.modmap: CXX_DYNDEP__LifeSimulation_Debug CMakeFiles/LifeSimulation.dir/src/main.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o.ddi CMakeFiles/LifeSimulation.dir/src/Common.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o.ddi CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o.ddi | /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/LifeSimulation.dir/CXXDependInfo.json
 
 
 # =============================================================================
@@ -434,16 +246,34 @@ build CMakeFiles/LifeSimulation.dir/CXX.dd | /Users/redshifted/codes/LifeSimulat
 #############################################
 # Link the executable LifeSimulation.app/Contents/MacOS/LifeSimulation
 
-build LifeSimulation.app/Contents/MacOS/LifeSimulation: CXX_EXECUTABLE_LINKER__LifeSimulation_Debug CMakeFiles/LifeSimulation.dir/src/main.cpp.o CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o CMakeFiles/LifeSimulation.dir/src/Common.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o | /opt/homebrew/lib/libSDL3.0.dylib libglad.a /opt/homebrew/opt/llvm/lib/libomp.dylib || libglad.a
+build LifeSimulation.app/Contents/MacOS/LifeSimulation: CXX_EXECUTABLE_LINKER__LifeSimulation_Debug CMakeFiles/LifeSimulation.dir/src/main.cpp.o CMakeFiles/LifeSimulation.dir/src/core/window.cpp.o CMakeFiles/LifeSimulation.dir/src/core/fps_counter.cpp.o CMakeFiles/LifeSimulation.dir/src/GUI/gui.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/shader.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/renderer.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/Particle.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/Simulation.cpp.o CMakeFiles/LifeSimulation.dir/src/Graphics/ParticleSystem.cpp.o CMakeFiles/LifeSimulation.dir/src/Common.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_draw.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_tables.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_widgets.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/imgui_demo.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_sdl3.cpp.o CMakeFiles/LifeSimulation.dir/external/imgui/backends/imgui_impl_opengl3.cpp.o | /opt/homebrew/lib/libSDL3.0.dylib libglad.a /opt/homebrew/opt/libomp/lib/libomp.dylib || libglad.a
   CONFIG = Debug
-  FLAGS = -O3 -march=native -mcpu=apple-m1 -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
+  FLAGS = -Xpreprocessor -fopenmp -O3 -mcpu=apple-m1 -mtune=apple-m1 -ffast-math -funroll-loops -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
   LINK_FLAGS = -L/opt/homebrew/opt/llvm/lib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk
-  LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libSDL3.0.dylib  libglad.a  -framework OpenGL  -framework Accelerate  /opt/homebrew/opt/llvm/lib/libomp.dylib
+  LINK_LIBRARIES = -Wl,-rpath,/opt/homebrew/lib  /opt/homebrew/lib/libSDL3.0.dylib  libglad.a  /opt/homebrew/opt/libomp/lib/libomp.dylib  -framework OpenGL  -framework Accelerate
   OBJECT_DIR = CMakeFiles/LifeSimulation.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = LifeSimulation.app/Contents/MacOS/LifeSimulation
   TARGET_PDB = LifeSimulation.dbg
+
+
+#############################################
+# Utility command for run_instrumented
+
+build run_instrumented: phony CMakeFiles/run_instrumented LifeSimulation.app/Contents/MacOS/LifeSimulation
+
+
+#############################################
+# Utility command for run_metal_validation
+
+build run_metal_validation: phony CMakeFiles/run_metal_validation LifeSimulation.app/Contents/MacOS/LifeSimulation
+
+
+#############################################
+# Utility command for run
+
+build run: phony CMakeFiles/run LifeSimulation.app/Contents/MacOS/LifeSimulation
 
 
 #############################################
@@ -469,6 +299,30 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Custom command for CMakeFiles/run_instrumented
+
+build CMakeFiles/run_instrumented | ${cmake_ninja_workdir}CMakeFiles/run_instrumented: CUSTOM_COMMAND LifeSimulation.app/Contents/MacOS/LifeSimulation || LifeSimulation.app/Contents/MacOS/LifeSimulation libglad.a
+  COMMAND = cd /Users/redshifted/codes/LifeSimulation/build && xcrun instruments -t Time\ Profiler /Users/redshifted/codes/LifeSimulation/build/LifeSimulation.app/Contents/MacOS/LifeSimulation
+  DESC = Running with Instruments Time Profiler
+
+
+#############################################
+# Custom command for CMakeFiles/run_metal_validation
+
+build CMakeFiles/run_metal_validation | ${cmake_ninja_workdir}CMakeFiles/run_metal_validation: CUSTOM_COMMAND LifeSimulation.app/Contents/MacOS/LifeSimulation || LifeSimulation.app/Contents/MacOS/LifeSimulation libglad.a
+  COMMAND = cd /Users/redshifted/codes/LifeSimulation/build && METAL_DEVICE_WRAPPER_TYPE=1 /Users/redshifted/codes/LifeSimulation/build/LifeSimulation.app/Contents/MacOS/LifeSimulation
+  DESC = Running with Metal API validation
+
+
+#############################################
+# Custom command for CMakeFiles/run
+
+build CMakeFiles/run | ${cmake_ninja_workdir}CMakeFiles/run: CUSTOM_COMMAND LifeSimulation.app/Contents/MacOS/LifeSimulation || LifeSimulation.app/Contents/MacOS/LifeSimulation libglad.a
+  COMMAND = cd /Users/redshifted/codes/LifeSimulation/build && /opt/homebrew/bin/cmake -E env DYLD_LIBRARY_PATH=/Users/redshifted/codes/LifeSimulation/build/LifeSimulation.app/Contents/MacOS /Users/redshifted/codes/LifeSimulation/build/LifeSimulation.app/Contents/MacOS/LifeSimulation
+  DESC = Running LifeSimulation
+
 # =============================================================================
 # Target aliases.
 
@@ -484,13 +338,6 @@ build glad: phony libglad.a
 #############################################
 # Folder: /Users/redshifted/codes/LifeSimulation/build
 
-build codegen: phony
-
-# =============================================================================
-
-#############################################
-# Folder: /Users/redshifted/codes/LifeSimulation/build
-
 build all: phony libglad.a LifeSimulation.app/Contents/MacOS/LifeSimulation
 
 # =============================================================================
@@ -500,14 +347,14 @@ build all: phony libglad.a LifeSimulation.app/Contents/MacOS/LifeSimulation
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /Users/redshifted/codes/LifeSimulation/build/cmake_install.cmake: RERUN_CMAKE | /Users/redshifted/codes/LifeSimulation/CMakeLists.txt /opt/homebrew/lib/cmake/SDL3/SDL3Config.cmake /opt/homebrew/lib/cmake/SDL3/SDL3ConfigVersion.cmake /opt/homebrew/lib/cmake/SDL3/SDL3headersTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets.cmake /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/FeatureSummary.cmake /opt/homebrew/share/cmake/Modules/FindOpenMP.cmake /opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
+build build.ninja /Users/redshifted/codes/LifeSimulation/build/cmake_install.cmake: RERUN_CMAKE | /Users/redshifted/codes/LifeSimulation/CMakeLists.txt /opt/homebrew/lib/cmake/SDL3/SDL3Config.cmake /opt/homebrew/lib/cmake/SDL3/SDL3ConfigVersion.cmake /opt/homebrew/lib/cmake/SDL3/SDL3headersTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets.cmake /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/CheckCXXCompilerFlag.cmake /opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/FeatureSummary.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake /opt/homebrew/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake /opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Users/redshifted/codes/LifeSimulation/CMakeLists.txt /opt/homebrew/lib/cmake/SDL3/SDL3Config.cmake /opt/homebrew/lib/cmake/SDL3/SDL3ConfigVersion.cmake /opt/homebrew/lib/cmake/SDL3/SDL3headersTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets.cmake /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeParseImplicitLinkInfo.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/FeatureSummary.cmake /opt/homebrew/share/cmake/Modules/FindOpenMP.cmake /opt/homebrew/share/cmake/Modules/FindPackageHandleStandardArgs.cmake /opt/homebrew/share/cmake/Modules/FindPackageMessage.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
+build /Users/redshifted/codes/LifeSimulation/CMakeLists.txt /opt/homebrew/lib/cmake/SDL3/SDL3Config.cmake /opt/homebrew/lib/cmake/SDL3/SDL3ConfigVersion.cmake /opt/homebrew/lib/cmake/SDL3/SDL3headersTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3sharedTargets.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets-release.cmake /opt/homebrew/lib/cmake/SDL3/SDL3testTargets.cmake /opt/homebrew/share/cmake/Modules/CMakeCInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCXXInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake /opt/homebrew/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /opt/homebrew/share/cmake/Modules/CMakeGenericSystem.cmake /opt/homebrew/share/cmake/Modules/CMakeInitializeConfigs.cmake /opt/homebrew/share/cmake/Modules/CMakeLanguageInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /opt/homebrew/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /opt/homebrew/share/cmake/Modules/CheckCXXCompilerFlag.cmake /opt/homebrew/share/cmake/Modules/CheckCXXSourceCompiles.cmake /opt/homebrew/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-C.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Compiler/Clang.cmake /opt/homebrew/share/cmake/Modules/Compiler/GNU.cmake /opt/homebrew/share/cmake/Modules/FeatureSummary.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake /opt/homebrew/share/cmake/Modules/Internal/CheckFlagCommonConfig.cmake /opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Linker/AppleClang.cmake /opt/homebrew/share/cmake/Modules/MacOSXBundleInfo.plist.in /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Apple-Clang.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin-Initialize.cmake /opt/homebrew/share/cmake/Modules/Platform/Darwin.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-C.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang-CXX.cmake /opt/homebrew/share/cmake/Modules/Platform/Linker/Apple-AppleClang.cmake /opt/homebrew/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.0.2/CMakeCCompiler.cmake CMakeFiles/4.0.2/CMakeCXXCompiler.cmake CMakeFiles/4.0.2/CMakeSystem.cmake: phony
 
 
 #############################################

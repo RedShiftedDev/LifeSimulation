@@ -251,6 +251,9 @@ OpenMP_C_FLAGS:STRING=-fopenmp=libomp
 //C compiler libraries for OpenMP parallelization
 OpenMP_C_LIB_NAMES:STRING=omp
 
+//Path to a library.
+OpenMP_LIBRARY:FILEPATH=/opt/homebrew/opt/libomp/lib/libomp.dylib
+
 //Path to the omp library for OpenMP
 OpenMP_omp_LIBRARY:FILEPATH=/opt/homebrew/opt/llvm/lib/libomp.dylib
 
@@ -419,6 +422,8 @@ FIND_PACKAGE_MESSAGE_DETAILS_OpenMP:INTERNAL=[TRUE][TRUE][ ][v5.1()]
 FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C:INTERNAL=[-fopenmp=libomp][/opt/homebrew/opt/llvm/lib/libomp.dylib][v5.1()]
 //Details about finding OpenMP_CXX
 FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX:INTERNAL=[-fopenmp=libomp][/opt/homebrew/opt/llvm/lib/libomp.dylib][v5.1()]
+//Test OPENMP_FOUND
+OPENMP_FOUND:INTERNAL=1
 //Result of TRY_COMPILE
 OpenMP_COMPILE_RESULT_CXX_fopenmplibomp:INTERNAL=TRUE
 //Result of TRY_COMPILE

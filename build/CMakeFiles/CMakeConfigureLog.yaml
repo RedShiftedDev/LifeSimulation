@@ -804,3 +804,38 @@ events:
         
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckSourceCompiles.cmake:104 (try_compile)"
+      - "/opt/homebrew/share/cmake/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "/opt/homebrew/share/cmake/Modules/CheckCXXCompilerFlag.cmake:55 (cmake_check_compiler_flag)"
+      - "CMakeLists.txt:12 (check_cxx_compiler_flag)"
+    checks:
+      - "Performing Test OPENMP_FOUND"
+    directories:
+      source: "/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/CMakeScratch/TryCompile-iUCCv3"
+      binary: "/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/CMakeScratch/TryCompile-iUCCv3"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "/opt/homebrew/Cellar/llvm/20.1.5/bin/clang-scan-deps"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: "-L/opt/homebrew/opt/llvm/lib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk"
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk"
+    buildResult:
+      variable: "OPENMP_FOUND"
+      cached: true
+      stdout: |
+        Change Dir: '/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/CMakeScratch/TryCompile-iUCCv3'
+        
+        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_15fee
+        [1/2] /opt/homebrew/opt/llvm/bin/clang++ -DOPENMP_FOUND  -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk   -Xpreprocessor -fopenmp -MD -MT CMakeFiles/cmTC_15fee.dir/src.cxx.o -MF CMakeFiles/cmTC_15fee.dir/src.cxx.o.d -o CMakeFiles/cmTC_15fee.dir/src.cxx.o -c /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/CMakeScratch/TryCompile-iUCCv3/src.cxx
+        [2/2] : && /opt/homebrew/opt/llvm/bin/clang++ -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/llvm/lib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.4.sdk CMakeFiles/cmTC_15fee.dir/src.cxx.o -o cmTC_15fee   && :
+        
+      exitCode: 0
+...

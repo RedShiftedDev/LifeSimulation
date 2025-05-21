@@ -1,4 +1,7 @@
 /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/glad.dir
 /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/LifeSimulation.dir
+/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/run_instrumented.dir
+/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/run_metal_validation.dir
+/Users/redshifted/codes/LifeSimulation/build/CMakeFiles/run.dir
 /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/edit_cache.dir
 /Users/redshifted/codes/LifeSimulation/build/CMakeFiles/rebuild_cache.dir

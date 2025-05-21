@@ -6,8 +6,8 @@ Renderer::Renderer() { init(); }
 
 void Renderer::init() {
   shader2D = std::make_unique<Shader>(
-      "/Users/redshifted/LifeSimulation/src/Graphics/shaders/shader2D.vert",
-      "/Users/redshifted/LifeSimulation/src/Graphics/shaders/shader2D.frag");
+      "../../../../src/Graphics/shaders/shader2D.vert",
+      "../../../../src/Graphics/shaders/shader2D.frag");
 
   setupRectBuffer();
   setupCircleBuffer();
