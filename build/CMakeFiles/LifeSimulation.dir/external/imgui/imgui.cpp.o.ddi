@@ -1,9 +1,0 @@
-{
-  "revision": 0,
-  "rules": [
-    {
-      "primary-output": "CMakeFiles/LifeSimulation.dir/external/imgui/imgui.cpp.o"
-    }
-  ],
-  "version": 1
-}
