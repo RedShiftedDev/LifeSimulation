@@ -39,51 +39,80 @@ void ParticleSystem::update(float deltaTime) {
 }
 
 void ParticleSystem::calculateInteractionForces(float deltaTime) {
-  const float R_MAX = 200.0f; // Maximum interaction radius
-
-  // Calculate forces between all particles
+  const float R_MAX = 200.0F;
+  const float gridCellSize = R_MAX;
+  const float invRMax = 1.0F / R_MAX;
+  const float R_MAX_SQR = R_MAX * R_MAX;
+  auto hashCell = [](int x, int y) -> size_t {
+    return static_cast<size_t>((x * 73856093) ^ (y * 19349663));
+  };
+  struct GridCell {
+    std::vector<size_t> particleIndices;
+  };
+  std::vector<size_t> activeParticles;
+  activeParticles.reserve(particles.size());
+  struct ParticleGridInfo {
+    int cellX;
+    int cellY;
+  };
+  std::vector<ParticleGridInfo> particleGridInfo(particles.size());
+  std::unordered_map<size_t, GridCell> grid;
   for (size_t i = 0; i < particles.size(); ++i) {
-    if (!particles[i].isActive())
+    if (!particles[i].isActive()) {
       continue;
-
-    glm::vec2 totalForce(0.0f, 0.0f);
-    const glm::vec2 pos_i = particles[i].getPos();
-    const int type_i = particles[i].getType();
-
-    for (size_t j = 0; j < particles.size(); ++j) {
-      if (i == j || !particles[j].isActive())
-        continue;
-
-      const glm::vec2 pos_j = particles[j].getPos();
-      const int type_j = particles[j].getType();
-
-      // Calculate distance vector
-      glm::vec2 distVec = pos_j - pos_i;
-      float distance = glm::length(distVec);
-
-      // Only process if within interaction radius and not too close
-      if (distance > 1e-6f && distance < R_MAX) {
-        // Get interaction strength from matrix
-        float interaction = getInteractionStrength(type_i, type_j);
-
-        // Calculate force magnitude
-        float forceMag = Particle::calculateForce(distance / R_MAX, interaction);
-
-        // Calculate force direction (normalized)
-        glm::vec2 forceDir = distVec / distance;
-
-        // Add to total force
-        totalForce += forceDir * forceMag;
+    }
+    activeParticles.push_back(i);
+    const glm::vec2 &pos = particles[i].getPos();
+    int cellX = static_cast<int>(std::floor(pos.x / gridCellSize));
+    int cellY = static_cast<int>(std::floor(pos.y / gridCellSize));
+    size_t cellHash = hashCell(cellX, cellY);
+    particleGridInfo[i].cellX = cellX;
+    particleGridInfo[i].cellY = cellY;
+    grid[cellHash].particleIndices.push_back(i);
+  }
+  std::vector<glm::vec2> forceBuffer(particles.size(), glm::vec2(0.0F));
+#pragma omp parallel for schedule(dynamic, 64)
+  for (int idx = 0; idx < static_cast<int>(activeParticles.size()); ++idx) {
+    size_t i = activeParticles[idx];
+    glm::vec2 totalForce(0.0F);
+    const glm::vec2 &pos_i = particles[i].getPos();
+    int type_i = particles[i].getType();
+    int cellX = particleGridInfo[i].cellX;
+    int cellY = particleGridInfo[i].cellY;
+    for (int dx = -1; dx <= 1; ++dx) {
+      for (int dy = -1; dy <= 1; ++dy) {
+        size_t neighborHash = hashCell(cellX + dx, cellY + dy);
+        auto it = grid.find(neighborHash);
+        if (it == grid.end()) {
+          continue;
+        }
+        const auto &cellParticles = it->second.particleIndices;
+        for (size_t j : cellParticles) {
+          if (i == j || !particles[j].isActive()) {
+            continue;
+          }
+          const glm::vec2 &pos_j = particles[j].getPos();
+          glm::vec2 distVec = pos_j - pos_i;
+          float distSqr = glm::dot(distVec, distVec);
+          if (distSqr < 2.5F || distSqr >= R_MAX_SQR) {
+            continue;
+          }
+          float distance = std::sqrt(distSqr);
+          float interaction = getInteractionStrength(type_i, particles[j].getType());
+          float normDist = distance * invRMax;
+          float forceMag = Particle::calculateForce(normDist, interaction);
+          glm::vec2 forceDir = distVec * (1.0F / distance);
+          totalForce += forceDir * forceMag;
+        }
       }
     }
-
-    // Scale the total force and apply to particle velocity
-    glm::vec2 scaledForce = totalForce * R_MAX;
-    glm::vec2 currentVel = particles[i].getVel();
-    currentVel += scaledForce * deltaTime;
-
-    // Update particle velocity
-    particles[i].setVel(currentVel);
+    forceBuffer[i] = totalForce * R_MAX;
+  }
+#pragma omp parallel for
+  for (int idx = 0; idx < static_cast<int>(activeParticles.size()); ++idx) {
+    size_t i = activeParticles[idx];
+    glm::vec2 newVel = particles[i].getVel() + forceBuffer[i] * deltaTime;
+    particles[i].setVel(newVel);
   }
 }
 

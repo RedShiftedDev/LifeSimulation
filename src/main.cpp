@@ -21,7 +21,7 @@ const unsigned int SCR_WIDTH = 1280;
 const unsigned int SCR_HEIGHT = 720;
 const int NUM_PARTICLE_TYPES = 6;
 const int PARTICLES_PER_EMIT = 100;
-const float PARTICLE_RADIUS = 3.0f;
+const float PARTICLE_RADIUS = 4.0f;
 const float SIMULATION_AREA_SIZE = 600.0f; // Simulation area size
 
 // Global variables
