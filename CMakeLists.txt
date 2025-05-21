@@ -252,6 +252,21 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     glad
 )
 
+# Platform-specific system monitoring libraries
+if(PLATFORM_WINDOWS)
+    # Windows Performance Data Helper (PDH) library
+    target_link_libraries(${PROJECT_NAME} PRIVATE
+        pdh.lib
+        psapi.lib
+    )
+elseif(PLATFORM_LINUX)
+    # Linux system monitoring libraries
+    find_library(LIBPROCPS procps)
+    if(LIBPROCPS)
+        target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBPROCPS})
+    endif()
+endif()
+
 # Platform-specific libraries
 if(PLATFORM_MACOS)
     if(OPENMP_LIBRARIES)
@@ -261,6 +276,8 @@ if(PLATFORM_MACOS)
     target_link_libraries(${PROJECT_NAME} PRIVATE
         "-framework OpenGL"
         "-framework Accelerate"
+        "-framework CoreFoundation"
+        "-framework IOKit"
     )
 elseif(PLATFORM_WINDOWS)
     if(OPENMP_FOUND OR OpenMP_CXX_FOUND)
@@ -269,6 +286,8 @@ elseif(PLATFORM_WINDOWS)
     
     target_link_libraries(${PROJECT_NAME} PRIVATE
         opengl32
+        pdh.lib
+        psapi.lib
     )
     
     # Configure startup project for Visual Studio 
@@ -282,6 +301,7 @@ else()
     find_package(OpenGL REQUIRED)
     target_link_libraries(${PROJECT_NAME} PRIVATE
         OpenGL::GL
+        ${LIBPROCPS}
     )
     
     # On some Linux systems, additional libraries might be needed
