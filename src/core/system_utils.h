@@ -14,10 +14,10 @@
 #include <windows.h>
 #pragma comment(lib, "pdh.lib")
 #elif defined(__linux__)
+#include <chrono>
 #include <fstream>
 #include <sstream>
 #include <string>
-#include <chrono>
 #include <unistd.h>
 #endif
 
@@ -47,7 +47,8 @@ struct CPUUsage {
   task_info_data_t tinfo;
   mach_msg_type_number_t task_info_count = TASK_INFO_MAX;
 
-  if (task_info(mach_task_self(), TASK_BASIC_INFO, (task_info_t)tinfo, &task_info_count) != KERN_SUCCESS) {
+  if (task_info(mach_task_self(), TASK_BASIC_INFO, (task_info_t)tinfo, &task_info_count) !=
+      KERN_SUCCESS) {
     return -1.0F;
   }
 
@@ -63,9 +64,10 @@ struct CPUUsage {
     thread_info_data_t thinfo;
     mach_msg_type_number_t thread_info_count = THREAD_INFO_MAX;
 
-    if (thread_info(thread_list[i], THREAD_BASIC_INFO, (thread_info_t)thinfo, &thread_info_count) == KERN_SUCCESS) {
+    if (thread_info(thread_list[i], THREAD_BASIC_INFO, (thread_info_t)thinfo, &thread_info_count) ==
+        KERN_SUCCESS) {
       thread_basic_info_t basic_info_th = (thread_basic_info_t)thinfo;
-      if (!(basic_info_th->flags & TH_FLAGS_IDLE)) {
+      if ((basic_info_th->flags & TH_FLAGS_IDLE) == 0) {
         total_cpu += basic_info_th->cpu_usage / (float)TH_USAGE_SCALE * 100.0;
       }
     }
@@ -82,7 +84,7 @@ struct CPUUsage {
 
 [[nodiscard]] float getApplicationMemoryUsage() noexcept {
   PROCESS_MEMORY_COUNTERS_EX pmc;
-  if (!GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS*)&pmc, sizeof(pmc))) {
+  if (!GetProcessMemoryInfo(GetCurrentProcess(), (PROCESS_MEMORY_COUNTERS *)&pmc, sizeof(pmc))) {
     return -1.0F;
   }
   return static_cast<float>(pmc.WorkingSetSize) / (1024 * 1024);
@@ -160,21 +162,25 @@ struct CPUUsage {
     std::istringstream iss(line);
     std::string unused;
     unsigned long long utime, stime;
-    
-    for (int i = 1; i < 14; ++i) iss >> unused;
+
+    for (int i = 1; i < 14; ++i)
+      iss >> unused;
     iss >> utime >> stime;
 
     auto currentTime = std::chrono::high_resolution_clock::now();
-    auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastTime).count();
+    auto elapsedTime =
+        std::chrono::duration_cast<std::chrono::milliseconds>(currentTime - lastTime).count();
 
     if (elapsedTime > 0 && lastProcessUserTime > 0) {
-      unsigned long long totalTime = (utime + stime) - (lastProcessUserTime + lastProcessSystemTime);
-      float percent = static_cast<float>(totalTime * 10000.0 / (elapsedTime * sysconf(_SC_CLK_TCK)));
-      
+      unsigned long long totalTime =
+          (utime + stime) - (lastProcessUserTime + lastProcessSystemTime);
+      float percent =
+          static_cast<float>(totalTime * 10000.0 / (elapsedTime * sysconf(_SC_CLK_TCK)));
+
       lastProcessUserTime = utime;
       lastProcessSystemTime = stime;
       lastTime = currentTime;
-      
+
       return percent;
     }
 
@@ -190,13 +196,9 @@ struct CPUUsage {
 // Fallback Implementations
 //------------------------------------------------------------------------------------------
 
-[[nodiscard]] float getApplicationMemoryUsage() noexcept {
-  return -1.0F;
-}
+[[nodiscard]] float getApplicationMemoryUsage() noexcept { return -1.0F; }
 
-[[nodiscard]] float getApplicationCPUUsage() noexcept {
-  return -1.0F;
-}
+[[nodiscard]] float getApplicationCPUUsage() noexcept { return -1.0F; }
 
 #endif
 
