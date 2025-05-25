@@ -19,7 +19,7 @@ if(PLATFORM_MACOS)
     # OpenMP requires special handling on macOS
     include(CheckCXXCompilerFlag)
     check_cxx_compiler_flag("-Xpreprocessor -fopenmp" OPENMP_FOUND)
-    
+
     if(OPENMP_FOUND)
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Xpreprocessor -fopenmp")
         # Find Homebrew-installed libomp
@@ -28,8 +28,8 @@ if(PLATFORM_MACOS)
             message(STATUS "Found OpenMP library: ${OpenMP_LIBRARY}")
             set(OPENMP_LIBRARIES ${OpenMP_LIBRARY})
         else()
-            find_library(OpenMP_LIBRARY omp 
-            PATHS 
+            find_library(OpenMP_LIBRARY omp
+            PATHS
                 /opt/homebrew/opt/libomp/lib
                 /usr/local/opt/libomp/lib
                 /opt/homebrew/Cellar/libomp/*/lib
@@ -65,7 +65,7 @@ if(PLATFORM_MACOS)
         OUTPUT_VARIABLE CPU_BRAND
         OUTPUT_STRIP_TRAILING_WHITESPACE
     )
-    
+
     if(CPU_BRAND MATCHES "Apple M")
         # Apple Silicon optimizations
         set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -mcpu=apple-m1 -mtune=apple-m1")
@@ -94,48 +94,46 @@ if(NOT MSVC)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ffast-math -funroll-loops")
 endif()
 
-# Find required dependencies
-if(PLATFORM_WINDOWS)
-    # Windows-specific dependency handling
-    set(SDL3_DIR "${CMAKE_CURRENT_SOURCE_DIR}/external/SDL3/cmake" CACHE PATH "Path to SDL3 CMake config")
-endif()
+# ============================================================================
+# WebGPU and GLFW Setup (replacing SDL3 and OpenGL)
+# ============================================================================
 
-# Try to find SDL3
-find_package(SDL3 QUIET)
-if(NOT SDL3_FOUND)
-    message(STATUS "SDL3 not found via find_package, checking for SDL3-static target")
-    # Check if SDL is included as a submodule/subdirectory
-    if(TARGET SDL3::SDL3-static OR TARGET SDL3::SDL3)
-        message(STATUS "Using SDL3 target from submodule/subdirectory")
-        set(SDL3_FOUND TRUE)
-        set(SDL3_LIBRARIES SDL3::SDL3)
-    else()
-        message(FATAL_ERROR "SDL3 not found. Please install SDL3 or provide its location.")
+# Handle GLFW for WebGPU (using system GLFW from Homebrew)
+if (NOT EMSCRIPTEN)
+    # Use system GLFW installed via Homebrew
+    find_package(glfw3 REQUIRED)
+    if(NOT glfw3_FOUND)
+        message(FATAL_ERROR "GLFW3 not found. Install with: brew install glfw")
     endif()
+    set(GLFW_TARGET glfw)
 else()
-    set(SDL3_LIBRARIES SDL3::SDL3)
+    add_library(glfw INTERFACE)
+    target_link_options(glfw INTERFACE -sUSE_GLFW=3)
+    set(GLFW_TARGET glfw)
 endif()
 
-# Glad library setup
-add_library(glad STATIC external/glad/src/glad.c)
-target_include_directories(glad PUBLIC external/glad/include)
+# Add WebGPU subdirectory
+add_subdirectory(external/webgpu)
 
-# ImGui sources
+# Add GLFW3WebGPU bridge
+add_subdirectory(external/glfw3webgpu)
+
+# ImGui sources (keeping core ImGui)
 set(IMGUI_SOURCES
     external/imgui/imgui.cpp
     external/imgui/imgui_draw.cpp
     external/imgui/imgui_tables.cpp
     external/imgui/imgui_widgets.cpp
-    external/imgui/imgui_demo.cpp
+    # external/imgui/imgui_demo.cpp
 )
 
-# ImGui backend sources for SDL3 + OpenGL3
+# ImGui backend sources for GLFW + WebGPU (replacing SDL3 + OpenGL3)
 set(IMGUI_BACKENDS_SOURCES
-    external/imgui/backends/imgui_impl_sdl3.cpp
-    external/imgui/backends/imgui_impl_opengl3.cpp
+    external/imgui/backends/imgui_impl_glfw.cpp
+    external/imgui/backends/imgui_impl_wgpu.cpp
 )
 
-# Resource handling
+# Resource handling (keeping shader resources, but they'll be WGSL now)
 set(RESOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/Graphics/shaders")
 set(RESOURCE_DEST "shaders")
 
@@ -150,12 +148,13 @@ if(PLATFORM_WINDOWS)
         src/Graphics/renderer.cpp
         src/Graphics/Particle.cpp
         src/Graphics/Simulation.cpp
+        src/Graphics/App.cpp
         src/Graphics/ParticleSystem.cpp
         src/Common.cpp
         ${IMGUI_SOURCES}
         ${IMGUI_BACKENDS_SOURCES}
     )
-    
+
     # Windows resource handling
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:${PROJECT_NAME}>/${RESOURCE_DEST}"
@@ -174,12 +173,13 @@ elseif(PLATFORM_MACOS)
         src/Graphics/renderer.cpp
         src/Graphics/Particle.cpp
         src/Graphics/Simulation.cpp
+        src/Graphics/App.cpp
         src/Graphics/ParticleSystem.cpp
         src/Common.cpp
         ${IMGUI_SOURCES}
         ${IMGUI_BACKENDS_SOURCES}
     )
-    
+
     # Set macOS bundle properties
     set_target_properties(${PROJECT_NAME} PROPERTIES
         MACOSX_BUNDLE TRUE
@@ -187,7 +187,7 @@ elseif(PLATFORM_MACOS)
         # MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
         # XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.yourcompany.lifesimulation"
     )
-    
+
     # Add bundle resources
     set_source_files_properties(
         ${RESOURCE_DIR}
@@ -210,7 +210,7 @@ else()
         ${IMGUI_SOURCES}
         ${IMGUI_BACKENDS_SOURCES}
     )
-    
+
     # Linux resource handling
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:${PROJECT_NAME}>/${RESOURCE_DEST}"
@@ -221,38 +221,42 @@ else()
     )
 endif()
 
-# Define any needed preprocessor macros
-target_compile_definitions(${PROJECT_NAME} PRIVATE 
-    IMGUI_IMPL_OPENGL_LOADER_GLAD
+# WebGPU binary copy function (from your reference project)
+target_copy_webgpu_binaries(${PROJECT_NAME})
+
+# Define preprocessor macros (updated for WebGPU)
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+    IMGUI_IMPL_WEBGPU_BACKEND_WGPU  # WebGPU backend for ImGui
     GLM_FORCE_SIMD_AVX2  # Enable SIMD optimizations in GLM
     # MAX_PARTICLES=1000000 # Define max particles globally
 )
 
 # Platform-specific preprocessor definitions
 if(PLATFORM_WINDOWS)
-    target_compile_definitions(${PROJECT_NAME} PRIVATE 
+    target_compile_definitions(${PROJECT_NAME} PRIVATE
         _CRT_SECURE_NO_WARNINGS
         NOMINMAX  # Prevents Windows from defining min/max macros
         WIN32_LEAN_AND_MEAN
     )
 endif()
 
+# Updated include directories for WebGPU
 target_include_directories(${PROJECT_NAME} PRIVATE
     src
     src/core
-    external/glad/include
     external/glm
     external/imgui
     external/imgui/backends
 )
 
-# Link with required libraries
+# Link with WebGPU libraries (replacing OpenGL/SDL3 with GLFW/WebGPU)
 target_link_libraries(${PROJECT_NAME} PRIVATE
-    ${SDL3_LIBRARIES}
-    glad
+    ${GLFW_TARGET}
+    webgpu
+    glfw3webgpu
 )
 
-# Platform-specific system monitoring libraries
+# Platform-specific system monitoring libraries (keeping as-is)
 if(PLATFORM_WINDOWS)
     # Windows Performance Data Helper (PDH) library
     target_link_libraries(${PROJECT_NAME} PRIVATE
@@ -267,14 +271,16 @@ elseif(PLATFORM_LINUX)
     endif()
 endif()
 
-# Platform-specific libraries
+# Platform-specific libraries (updated for WebGPU - removing OpenGL)
 if(PLATFORM_MACOS)
     if(OPENMP_LIBRARIES)
         target_link_libraries(${PROJECT_NAME} PRIVATE ${OPENMP_LIBRARIES})
     endif()
-    
+
     target_link_libraries(${PROJECT_NAME} PRIVATE
-        "-framework OpenGL"
+        "-framework Metal"          # Metal for WebGPU backend
+        "-framework MetalKit"       # MetalKit utilities
+        "-framework QuartzCore"     # Core Animation/CAMetalLayer
         "-framework Accelerate"
         "-framework CoreFoundation"
         "-framework IOKit"
@@ -283,35 +289,69 @@ elseif(PLATFORM_WINDOWS)
     if(OPENMP_FOUND OR OpenMP_CXX_FOUND)
         target_link_libraries(${PROJECT_NAME} PRIVATE ${OPENMP_LIBRARIES})
     endif()
-    
+
     target_link_libraries(${PROJECT_NAME} PRIVATE
-        opengl32
+        d3d12           # DirectX 12 for WebGPU backend
+        dxgi            # DirectX Graphics Infrastructure
+        d3dcompiler     # Shader compilation
         pdh.lib
         psapi.lib
     )
-    
-    # Configure startup project for Visual Studio 
+
+    # Configure startup project for Visual Studio
     set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME})
 else()
-    # Linux/Unix
+    # Linux/Unix - using Vulkan backend for WebGPU
     if(OPENMP_FOUND OR OpenMP_CXX_FOUND)
         target_link_libraries(${PROJECT_NAME} PRIVATE ${OPENMP_LIBRARIES})
     endif()
-    
-    find_package(OpenGL REQUIRED)
-    target_link_libraries(${PROJECT_NAME} PRIVATE
-        OpenGL::GL
-        ${LIBPROCPS}
-    )
-    
-    # On some Linux systems, additional libraries might be needed
+
+    find_package(Vulkan)
+    if(Vulkan_FOUND)
+        target_link_libraries(${PROJECT_NAME} PRIVATE Vulkan::Vulkan)
+    else()
+        message(WARNING "Vulkan not found. WebGPU may fall back to software rendering.")
+    endif()
+
+    target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBPROCPS})
+
+    # Math library
     find_library(MATH_LIBRARY m)
     if(MATH_LIBRARY)
         target_link_libraries(${PROJECT_NAME} PRIVATE ${MATH_LIBRARY})
     endif()
 endif()
 
-# Additional development/debugging targets
+# Set target properties for WebGPU
+set_target_properties(${PROJECT_NAME} PROPERTIES
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    CXX_EXTENSIONS OFF
+    COMPILE_WARNING_AS_ERROR ON
+)
+
+# Compiler-specific warning flags
+if (MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+else()
+    target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -pedantic)
+endif()
+
+# Xcode-specific settings for WebGPU development
+if (XCODE)
+    set_target_properties(${PROJECT_NAME} PROPERTIES
+        XCODE_GENERATE_SCHEME ON
+        XCODE_SCHEME_ENABLE_GPU_FRAME_CAPTURE_MODE "Metal"
+    )
+endif()
+
+# Emscripten support for web deployment
+if (EMSCRIPTEN)
+    set_target_properties(${PROJECT_NAME} PROPERTIES SUFFIX ".html")
+    target_link_options(${PROJECT_NAME} PRIVATE -sASYNCIFY)
+endif()
+
+# Additional development/debugging targets (updated for WebGPU)
 if(PLATFORM_MACOS)
     add_custom_target(run_instrumented
         COMMAND xcrun instruments -t "Time Profiler" $<TARGET_FILE:${PROJECT_NAME}>
@@ -319,18 +359,25 @@ if(PLATFORM_MACOS)
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
         COMMENT "Running with Instruments Time Profiler"
     )
-    
+
     add_custom_target(run_metal_validation
         COMMAND METAL_DEVICE_WRAPPER_TYPE=1 $<TARGET_FILE:${PROJECT_NAME}>
         DEPENDS ${PROJECT_NAME}
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-        COMMENT "Running with Metal API validation"
+        COMMENT "Running with Metal API validation (useful for WebGPU Metal backend)"
+    )
+
+    add_custom_target(run_metal_debug
+        COMMAND METAL_DEVICE_WRAPPER_TYPE=2 $<TARGET_FILE:${PROJECT_NAME}>
+        DEPENDS ${PROJECT_NAME}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        COMMENT "Running with Metal debug layer"
     )
 endif()
 
 # Add a simple run target that works across platforms
 add_custom_target(run
-    COMMAND ${CMAKE_COMMAND} -E env 
+    COMMAND ${CMAKE_COMMAND} -E env
         $<IF:$<BOOL:${PLATFORM_MACOS}>,DYLD_LIBRARY_PATH,LD_LIBRARY_PATH>=$<TARGET_FILE_DIR:${PROJECT_NAME}>
         $<TARGET_FILE:${PROJECT_NAME}>
     DEPENDS ${PROJECT_NAME}

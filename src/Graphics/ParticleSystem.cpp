@@ -11,12 +11,19 @@ std::mutex ParticleSystem::previousForcesMutex;
 
 ParticleSystem::ParticleSystem(size_t maxParticles) : maxParticles(maxParticles) {
   particles.reserve(maxParticles);
-  Particle::initializeSharedResources();
+  // Note: Remove the call to initializeSharedResources() from constructor
+  // It should be called from main after WebGPU is initialized
 }
 
 ParticleSystem::~ParticleSystem() {
   particles.clear();
   Particle::cleanupSharedResources();
+}
+
+// Add this initialization function to be called after WebGPU setup
+void ParticleSystem::initializeWebGPU(WGPUDevice device, WGPUTextureFormat swapChainFormat) {
+  // This will call Particle::initializeSharedResources which calls Particle::initInteractionMatrix
+  Particle::initializeSharedResources(device, swapChainFormat);
 }
 
 void ParticleSystem::update(float deltaTime) {
@@ -46,6 +53,9 @@ void ParticleSystem::update(float deltaTime) {
                                    [](const Particle &p) { return !p.isActive(); }),
                     particles.end());
   }
+
+  // Update instance data for WebGPU rendering
+  Particle::updateAllInstanceData();
 }
 
 void ParticleSystem::simplifiedForceCalculation(float deltaTime) {
@@ -124,7 +134,7 @@ void ParticleSystem::calculateInteractionForces(float deltaTime) {
 
   populateSpatialGrid(grid, activeParticles, cellX, cellY, gridWidth, gridHeight);
 
-  std::vector<glm::vec2> forceBuffer(particles.size(), glm::vec2(0.0f));
+  std::vector<glm::vec2> forceBuffer(particles.size(), glm::vec2(0.0F));
 
   computeInteractionForcesOMP(grid, activeParticles, cellX, cellY, forceBuffer, gridWidth,
                               gridHeight);
@@ -230,7 +240,9 @@ void ParticleSystem::applyForcesOMP(const std::vector<size_t> &activeParticles,
   }
 }
 
-void ParticleSystem::render(const glm::mat4 &projection) { Particle::renderAll(projection); }
+void ParticleSystem::render(const glm::mat4 &projection, WGPURenderPassEncoder renderPass) {
+  Particle::renderAll(projection, renderPass);
+}
 
 Particle &ParticleSystem::createParticle() {
   if (particles.size() < maxParticles) {
@@ -279,7 +291,7 @@ void ParticleSystem::randomizeInteractions() { Particle::randomizeInteractionMat
 void ParticleSystem::clear() {
   particles.clear();
   Particle::cleanupSharedResources();
-  Particle::initializeSharedResources();
+  // Don't reinitialize here - it should be done externally with proper WebGPU context
 }
 
 size_t ParticleSystem::getParticleCount() const { return particles.size(); }

@@ -5,6 +5,7 @@
 #include <memory>
 #include <unordered_map>
 #include <vector>
+#include <webgpu/webgpu.h>
 #include "Graphics/Simulation.h"
 #include "Graphics/shader.h"
 
@@ -13,7 +14,7 @@ struct InteractionMatrixCache {
   int size;
 };
 
-static thread_local InteractionMatrixCache interactionCache = {{0}, 0};
+static thread_local InteractionMatrixCache interactionCache = {{{0}}, 0};
 
 struct ColorHash {
   std::size_t operator()(const glm::vec3 &color) const {
@@ -32,6 +33,21 @@ struct ColorEqual {
   }
 };
 
+// Vertex structure for particle quad
+struct ParticleVertex {
+  glm::vec2 position; // Quad vertex position
+  glm::vec2 texCoord; // Texture coordinates
+};
+
+// Instance data structure for each particle
+struct ParticleInstance {
+  glm::vec2 worldPosition; // World position of particle
+  float radius;            // Particle radius
+  float active;            // Active flag (0.0 or 1.0)
+  glm::vec3 color;         // Particle color
+  float padding;           // Padding for alignment
+};
+
 class Particle {
 public:
   Particle();
@@ -43,9 +59,10 @@ public:
   void update(float deltaTime);
   static void updateAll(std::vector<Particle> &particles, float deltaTime);
 
-  static void initializeSharedResources();
+  // WebGPU-specific initialization
+  static void initializeSharedResources(WGPUDevice device, WGPUTextureFormat swapChainFormat);
   static void cleanupSharedResources();
-  static void renderAll(const glm::mat4 &projection);
+  static void renderAll(const glm::mat4 &projection, WGPURenderPassEncoder renderPass);
   static void updateAllInstanceData();
 
   static void initInteractionMatrix(int numTypes);
@@ -93,7 +110,8 @@ public:
     int closestColorIndex = 0;
     float minDistance = std::numeric_limits<float>::max();
 
-    for (int i = 0; i < simulation::COLORS.size() && i < numParticleTypes; ++i) {
+    for (int i = 0; static_cast<size_t>(i) < simulation::COLORS.size() && i < numParticleTypes;
+         ++i) {
       const auto &refColor = simulation::COLORS[i];
       float dx = color.r - refColor.r;
       float dy = color.g - refColor.g;
@@ -119,7 +137,8 @@ public:
   }
 
   void setType(int type) {
-    if (type >= 0 && type < numParticleTypes && type < simulation::COLORS.size()) {
+    if (type >= 0 && type < numParticleTypes &&
+        static_cast<size_t>(type) < simulation::COLORS.size()) {
       this->color = simulation::COLORS[type];
       updateInstanceData();
     }
@@ -170,11 +189,14 @@ private:
 
   void updateInstanceData();
 
-  static GLuint quadVAO;
-  static GLuint quadVBO;
-  static GLuint instanceVBO;
+  // WebGPU resources (replacing OpenGL equivalents)
+  static WGPUDevice device;
+  static WGPUBuffer vertexBuffer;   // Quad vertices (replaces quadVAO/quadVBO)
+  static WGPUBuffer indexBuffer;    // Quad indices
+  static WGPUBuffer instanceBuffer; // Instance data (replaces instanceVBO)
+  static WGPURenderPipeline renderPipeline;
   static std::unique_ptr<Shader> particleShader;
-  static std::vector<glm::vec4> instanceData;
+  static std::vector<ParticleInstance> instanceData;
   static bool initialized;
   static size_t particleCount;
   static const size_t MAX_PARTICLES;
@@ -184,4 +206,9 @@ private:
   static float interactionRadius;
   static float frictionFactor;
   static const float BETA;
+
+  // WebGPU helper methods
+  static void createVertexBuffer();
+  static void createInstanceBuffer();
+  static void createRenderPipeline(WGPUTextureFormat swapChainFormat);
 };

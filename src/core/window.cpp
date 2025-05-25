@@ -1,65 +1,89 @@
+// window.cpp
 #include "window.h"
-#include <backends/imgui_impl_sdl3.h>
+#include <iostream>
 #include <stdexcept>
 #include <string>
 
 Window::Window(const char *title, const int width, const int height) {
   windowTitle = title;
 
-  if (static_cast<int>(SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS)) < 0) {
-    throw std::runtime_error("Failed to initialize SDL");
+  if (glfwInit() == GLFW_FALSE) {
+    throw std::runtime_error("Failed to initialize GLFW");
   }
 
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
-  SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-  SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+  // Set GLFW hints for WebGPU (no OpenGL context needed)
+  glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
+  glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
-  window =
-      SDL_CreateWindow(windowTitle.c_str(), width, height,
-                       SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIGH_PIXEL_DENSITY);
+  window = glfwCreateWindow(width, height, windowTitle.c_str(), nullptr, nullptr);
   if (window == nullptr) {
-    throw std::runtime_error("Failed to create SDL window");
+    glfwTerminate();
+    throw std::runtime_error("Failed to create GLFW window");
   }
 
-  glContext = SDL_GL_CreateContext(window);
-  if (glContext == nullptr) {
-    throw std::runtime_error("Failed to create OpenGL context");
-  }
+  // Set user pointer for callbacks
+  glfwSetWindowUserPointer(window, this);
 
-  SDL_GL_MakeCurrent(window, glContext);
-  SDL_GL_SetSwapInterval(1);
+  // Set resize callback
+  glfwSetFramebufferSizeCallback(window, framebufferSizeCallback);
 }
 
 Window::~Window() {
-  if (glContext != nullptr) {
-    SDL_GL_DestroyContext(glContext);
+  if (surface != nullptr) {
+    wgpuSurfaceRelease(surface);
   }
   if (window != nullptr) {
-    SDL_DestroyWindow(window);
+    glfwDestroyWindow(window);
   }
-  SDL_Quit();
+  glfwTerminate();
 }
 
-void Window::swapBuffers() const { SDL_GL_SwapWindow(window); }
+void Window::createSurface(WGPUInstance instance) {
+  if (surface != nullptr) {
+    wgpuSurfaceRelease(surface);
+  }
+
+  surface = glfwGetWGPUSurface(instance, window);
+  if (surface == nullptr) {
+    throw std::runtime_error("Failed to create WebGPU surface");
+  }
+}
+
+void Window::getFramebufferSize(int *width, int *height) const {
+  glfwGetFramebufferSize(window, width, height);
+}
+
+void Window::getWindowSize(int *width, int *height) const {
+  glfwGetWindowSize(window, width, height);
+}
+
+void Window::framebufferSizeCallback(GLFWwindow *window, int width, int height) {
+  Window *windowObj = static_cast<Window *>(glfwGetWindowUserPointer(window));
+  if (windowObj != nullptr) {
+    windowObj->resized = true;
+    std::cout << "Window resized to: " << width << "x" << height << std::endl;
+  }
+}
+
+void Window::swapBuffers() const {
+  // WebGPU handles presentation through swap chain
+  // This method is kept for compatibility but doesn't need to do anything
+}
 
 void Window::pollEvents() {
-  SDL_Event event;
-  while (SDL_PollEvent(&event)) {
-    ImGui_ImplSDL3_ProcessEvent(&event);
-    if (event.type == SDL_EVENT_QUIT) {
-      isRunning = false;
-    }
+  glfwPollEvents();
+  if (glfwWindowShouldClose(window) != 0) {
+    isRunning = false;
   }
 }
 
 bool Window::shouldClose() const { return !isRunning; }
 
-SDL_Window *Window::getSDLWindow() const { return window; }
+GLFWwindow *Window::getGLFWWindow() const { return window; }
 
-SDL_GLContext Window::getGLContext() const { return glContext; }
+WGPUSurface Window::getWGPUSurface() const { return surface; }
 
 void Window::updateTitle(float fps) {
   std::string title = windowTitle + " | FPS: " + std::to_string(static_cast<int>(fps));
-  SDL_SetWindowTitle(window, title.c_str());
+  glfwSetWindowTitle(window, title.c_str());
 }

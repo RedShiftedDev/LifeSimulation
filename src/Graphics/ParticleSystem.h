@@ -2,6 +2,7 @@
 
 #include <mutex>
 #include <vector>
+#include <webgpu/webgpu.h>
 #include "Particle.h"
 
 class ParticleSystem {
@@ -10,7 +11,10 @@ public:
   ~ParticleSystem();
 
   void update(float deltaTime);
-  static void render(const glm::mat4 &projection);
+  static void render(const glm::mat4 &projection, WGPURenderPassEncoder renderPass);
+
+  // WebGPU initialization - call this after WebGPU device is created
+  static void initializeWebGPU(WGPUDevice device, WGPUTextureFormat swapChainFormat);
 
   // Force calculation for particle interactions
   void calculateInteractionForces(float deltaTime);

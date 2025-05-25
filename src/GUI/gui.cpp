@@ -163,10 +163,10 @@ void RenderGui(const FpsCounter &fpsCounter) {
   ImGui::Spacing();
   ImGui::TextColored(ImVec4(0.4F, 0.8F, 1.0F, 1.0F), "Background Color");
   ImGui::PushStyleColor(ImGuiCol_FrameBg, ImVec4(0.1F, 0.1F, 0.2F, 1.0F));
-  float bgColor[4] = {glBackgroundColour.r, glBackgroundColour.g, glBackgroundColour.b,
-                      glBackgroundColour.a};
+  float bgColor[4] = {::BackgroundColour.r, ::BackgroundColour.g, ::BackgroundColour.b,
+                      ::BackgroundColour.a};
   if (ImGui::ColorEdit4("##BackgroundColor", bgColor)) {
-    glBackgroundColour = glm::vec4(bgColor[0], bgColor[1], bgColor[2], bgColor[3]);
+    ::BackgroundColour = glm::vec4(bgColor[0], bgColor[1], bgColor[2], bgColor[3]);
   }
   ImGui::PopStyleColor();
 

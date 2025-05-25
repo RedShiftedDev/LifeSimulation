@@ -1,30 +1,64 @@
+// shader.h
 #pragma once
-#include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <filesystem>
+#include <glfw3webgpu.h>
 #include <glm/glm.hpp>
 #include <string>
+#include <string_view>
+#include <webgpu/webgpu.h>
 
 class Shader {
 public:
-  Shader(std::filesystem::path vertexPath, std::filesystem::path fragmentPath);
+  Shader(std::filesystem::path vertexPath, std::filesystem::path fragmentPath, WGPUDevice device);
   ~Shader();
 
-  void use() const;
+  WGPUShaderModule getVertexModule() const { return vertexModule; }
+  WGPUShaderModule getFragmentModule() const { return fragmentModule; }
+
   void reload();
 
-  void setBool(std::string_view name, bool v) const;
-  void setInt(std::string_view name, int v) const;
-  void setFloat(std::string_view name, float v) const;
-  void setVec3(std::string_view name, glm::vec3 const &v) const;
-  void setMat4(std::string_view name, glm::mat4 const &m) const;
-  GLuint getProgramID() const { return programID; }
+  // Uniform setting functions
+  void setBool(std::string_view name, bool v);
+  void setInt(std::string_view name, int v);
+  void setFloat(std::string_view name, float v);
+  void setVec3(std::string_view name, const glm::vec3 &v);
+  void setMat4(std::string_view name, const glm::mat4 &m);
+
+  // WebGPU-specific functions
+  WGPUBindGroup getUniformBindGroup() const { return uniformBindGroup; }
+  WGPUBindGroupLayout getBindGroupLayout() const { return bindGroupLayout; }
+  void updateUniforms();
+  WGPUBindGroupLayout &getBindGroupLayoutRef();
 
 private:
-  GLuint programID;
+  WGPUDevice device;
+  WGPUShaderModule vertexModule;
+  WGPUShaderModule fragmentModule;
+  WGPUBuffer transformBuffer; // For matrices
+  WGPUBuffer materialBuffer;  // For colors and other material properties
+  WGPUBindGroup uniformBindGroup;
+  WGPUBindGroupLayout bindGroupLayout;
+
   std::filesystem::path vertexPath, fragmentPath;
-  mutable std::unordered_map<std::string, GLint> uniformLocationCache;
-  GLint getUniformLocation(std::string_view name) const;
-  static GLuint buildProgramFromFiles(std::filesystem::path const &vsPath,
-                                      std::filesystem::path const &fsPath);
-  static void checkCompileErrors(GLuint id, std::string_view type);
+
+  // Separate uniform data structures for better alignment
+  struct TransformUniforms {
+    glm::mat4 model;
+    glm::mat4 projection;
+    float padding[32]; // Extra space for future use
+  } transformData;
+
+  struct MaterialUniforms {
+    glm::vec3 color;
+    float alpha;
+    glm::vec3 padding1;
+    float padding2;
+    float extraFloats[12]; // Extra space for future material properties
+  } materialData;
+
+  WGPUShaderModule createShaderModule(const std::filesystem::path &path);
+  void createUniformBuffers();
+  void createBindGroup();
+  static std::string loadShaderSource(const std::filesystem::path &path);
 };

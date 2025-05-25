@@ -1,13 +1,17 @@
 #pragma once
 #include <glm/glm.hpp>
 #include <memory>
+#include <webgpu/webgpu.h>
 #include "shader.h"
 
 class Renderer {
 public:
-  Renderer();
+  Renderer(WGPUDevice device, WGPUTextureFormat swapChainFormat);
+  ~Renderer();
+
   void init();
-  void render();
+  void beginRender(WGPURenderPassEncoder renderPass);
+  void endRender();
 
   void setProjectionMatrix(const glm::mat4 &projection) { projectionMatrix = projection; }
 
@@ -17,14 +21,32 @@ public:
                 float thickness = 1.0F);
 
 private:
+  WGPUDevice device;
+  WGPUTextureFormat swapChainFormat;
+  WGPURenderPassEncoder currentRenderPass;
+
   std::unique_ptr<Shader> shader2D;
-  unsigned int rectVAO, rectVBO;
-  unsigned int circleVAO, circleVBO;
-  unsigned int lineVAO, lineVBO;
+
+  // WebGPU resources for rectangle
+  WGPUBuffer rectVertexBuffer;
+  WGPUBuffer rectIndexBuffer;
+  WGPURenderPipeline rectPipeline;
+
+  // WebGPU resources for circle
+  WGPUBuffer circleVertexBuffer;
+  WGPURenderPipeline circlePipeline;
+
+  // WebGPU resources for line
+  WGPUBuffer lineVertexBuffer;
+  WGPURenderPipeline linePipeline;
+
   glm::mat4 projectionMatrix{1.0F};
 
-  // Helper methods to set up buffers
+  // Helper methods to set up buffers and pipelines
   void setupRectBuffer();
   void setupCircleBuffer();
   void setupLineBuffer();
+  void createRenderPipelines();
+
+  WGPURenderPipeline createRenderPipeline(WGPUPrimitiveTopology topology, const char *label);
 };
