@@ -1,19 +1,17 @@
 // shader.cpp
 #include "shader.h"
-#include <cstring> // For std::memset
-#include <fstream>
+#include <cstring>
 #include <glm/gtc/type_ptr.hpp>
 #include <iostream>
-#include <sstream>
-#include <stdexcept> // For std::runtime_error
+#include <stdexcept>
+#include "Shaders/EmbeddedShaders.h"
 
-Shader::Shader(std::filesystem::path vertexPath, std::filesystem::path fragmentPath,
+Shader::Shader(const std::string &vertexShaderName, const std::string &fragmentShaderName,
                WGPUDevice device)
     : device(device), vertexModule(nullptr), fragmentModule(nullptr), transformBuffer(nullptr),
       materialBuffer(nullptr), // Initialize to nullptr
-      uniformBindGroup(nullptr), bindGroupLayout(nullptr), vertexPath(std::move(vertexPath)),
-      fragmentPath(std::move(fragmentPath)) // Initialize to nullptr
-{
+      uniformBindGroup(nullptr), bindGroupLayout(nullptr), vertexShaderName(vertexShaderName),
+      fragmentShaderName(fragmentShaderName) {
 
   // Initialize uniform data to zero or default values
   std::memset(&transformData, 0, sizeof(transformData));
@@ -25,19 +23,18 @@ Shader::Shader(std::filesystem::path vertexPath, std::filesystem::path fragmentP
   materialData.color = glm::vec3(1.0F);
   materialData.alpha = 1.0F;
 
-  // Create shader modules
-  this->vertexModule = createShaderModule(this->vertexPath);
-  this->fragmentModule = createShaderModule(this->fragmentPath);
+  // Create shader modules using embedded shaders
+  this->vertexModule = createShaderModule(this->vertexShaderName);
+  this->fragmentModule = createShaderModule(this->fragmentShaderName);
 
   // --- CRITICAL: Check if shader modules were created successfully ---
   if (this->vertexModule == nullptr || this->fragmentModule == nullptr) {
     std::string errorMsg = "Shader Creation Failed: ";
     if (this->vertexModule == nullptr) {
-      errorMsg += "Could not create vertex shader module from " + this->vertexPath.string() + ". ";
+      errorMsg += "Could not create vertex shader module from " + this->vertexShaderName + ". ";
     }
     if (this->fragmentModule == nullptr) {
-      errorMsg +=
-          "Could not create fragment shader module from " + this->fragmentPath.string() + ". ";
+      errorMsg += "Could not create fragment shader module from " + this->fragmentShaderName + ". ";
     }
     // Release any partially created modules before throwing
     if (this->vertexModule != nullptr) {
@@ -80,9 +77,7 @@ Shader::~Shader() {
 }
 
 void Shader::reload() {
-  // Release old resources (bind group and layout might need to be recreated if shaders change
-  // significantly) For simplicity, we are only reloading modules here. If bindings change, more is
-  // needed.
+  // Release old resources
   if (vertexModule != nullptr) {
     wgpuShaderModuleRelease(vertexModule);
     vertexModule = nullptr;
@@ -92,9 +87,9 @@ void Shader::reload() {
     fragmentModule = nullptr;
   }
 
-  // Recreate modules
-  vertexModule = createShaderModule(vertexPath);
-  fragmentModule = createShaderModule(fragmentPath);
+  // Recreate modules using embedded shaders
+  vertexModule = createShaderModule(vertexShaderName);
+  fragmentModule = createShaderModule(fragmentShaderName);
 
   if (vertexModule == nullptr || fragmentModule == nullptr) {
     std::cerr << "Error: Shader reload failed. Modules could not be recreated." << std::endl;
@@ -148,17 +143,17 @@ void Shader::updateUniforms() {
   // No need to release queue if obtained via wgpuDeviceGetQueue directly like this
 }
 
-WGPUShaderModule Shader::createShaderModule(const std::filesystem::path &path) {
+WGPUShaderModule Shader::createShaderModule(const std::string &shaderName) {
   std::string source;
   try {
-    source = loadShaderSource(path);
+    source = loadShaderSource(shaderName);
   } catch (const std::runtime_error &e) {
-    std::cerr << "Error loading shader source for " << path << ": " << e.what() << std::endl;
+    std::cerr << "Error loading shader source for " << shaderName << ": " << e.what() << std::endl;
     return nullptr;
   }
 
   if (source.empty()) {
-    std::cerr << "Error: Shader source file is empty: " << path << std::endl;
+    std::cerr << "Error: Shader source is empty: " << shaderName << std::endl;
     return nullptr;
   }
 
@@ -166,14 +161,13 @@ WGPUShaderModule Shader::createShaderModule(const std::filesystem::path &path) {
   wgslDesc.chain.sType = WGPUSType_ShaderModuleWGSLDescriptor;
   wgslDesc.code = source.c_str();
 
-  std::string labelStr = path.filename().string(); // Ensure labelStr lives long enough
   WGPUShaderModuleDescriptor moduleDesc = {};
   moduleDesc.nextInChain = &wgslDesc.chain;
-  moduleDesc.label = labelStr.c_str();
+  moduleDesc.label = shaderName.c_str();
 
   WGPUShaderModule module = wgpuDeviceCreateShaderModule(device, &moduleDesc);
   if (module == nullptr) {
-    std::cerr << "Error: wgpuDeviceCreateShaderModule failed for: " << path << std::endl;
+    std::cerr << "Error: wgpuDeviceCreateShaderModule failed for: " << shaderName << std::endl;
     // Additional error information might be available via device error callbacks
   }
   return module;
@@ -257,21 +251,18 @@ void Shader::createBindGroup() {
   }
 }
 
-// Existing non-const getter (can be kept if modification is intended, though rare for BGL)
 WGPUBindGroupLayout &Shader::getBindGroupLayoutRef() { return bindGroupLayout; }
 
-// New const getter as recommended for Particle::createRenderPipeline
-// This is defined in shader.h already, but ensure it's consistent:
-// WGPUBindGroupLayout Shader::getBindGroupLayout() const { return bindGroupLayout; }
-// (Implementation would be in the .cpp if not inline in .h)
-
-std::string Shader::loadShaderSource(const std::filesystem::path &path) {
-  std::ifstream file(path);
-  if (!file.is_open()) {
-    // Changed to throw, so createShaderModule can catch it.
-    throw std::runtime_error("Failed to open shader file: " + path.string());
+// Modified to use embedded shaders instead of file loading
+std::string Shader::loadShaderSource(const std::string &shaderName) {
+  if (!EmbeddedShaders::hasShader(shaderName)) {
+    throw std::runtime_error("Shader not found in embedded resources: " + shaderName);
   }
-  std::stringstream stream;
-  stream << file.rdbuf();
-  return stream.str();
+
+  std::string source = EmbeddedShaders::getShader(shaderName);
+  if (source.empty()) {
+    throw std::runtime_error("Embedded shader source is empty: " + shaderName);
+  }
+
+  return source;
 }

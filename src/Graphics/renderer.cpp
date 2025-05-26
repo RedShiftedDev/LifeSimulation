@@ -1,3 +1,4 @@
+// renderer.cpp - Updated to use embedded shader names
 #include "renderer.h"
 #include <cmath>
 #include <glm/gtc/matrix_transform.hpp>
@@ -34,9 +35,8 @@ Renderer::~Renderer() {
 }
 
 void Renderer::init() {
-  shader2D =
-      std::make_unique<Shader>("../../../../src/Graphics/shaders/shader2D.vert.wgsl",
-                               "../../../../src/Graphics/shaders/shader2D.frag.wgsl", device);
+  // CHANGED: Use embedded shader names instead of file paths
+  shader2D = std::make_unique<Shader>("shader2D.vert.wgsl", "shader2D.frag.wgsl", device);
 
   setupRectBuffer();
   setupCircleBuffer();
@@ -85,39 +85,33 @@ void Renderer::setupCircleBuffer() {
   size_t maxVertices = (32 + 2) * 3;
 
   WGPUBufferDescriptor bufferDesc = {};
-  bufferDesc.label = "Circle Vertex Buffer"; // Added label
+  bufferDesc.label = "Circle Vertex Buffer";
   bufferDesc.size = maxVertices * sizeof(float);
   bufferDesc.usage = WGPUBufferUsage_Vertex | WGPUBufferUsage_CopyDst;
-  bufferDesc.mappedAtCreation = 0; // Correct, not mapped at creation
+  bufferDesc.mappedAtCreation = 0;
 
   circleVertexBuffer = wgpuDeviceCreateBuffer(device, &bufferDesc);
-  if (circleVertexBuffer == nullptr) { // Added null check
+  if (circleVertexBuffer == nullptr) {
     throw std::runtime_error("Failed to create circle vertex buffer");
   }
 }
 
 void Renderer::setupLineBuffer() {
-  // Initial vertices are written here, but it's updated per draw call.
-  // So, using wgpuQueueWriteBuffer for the initial state is consistent.
   float vertices[] = {
       0.0F, 0.0F, 0.0F, // start point
       1.0F, 0.0F, 0.0F  // end point
   };
 
   WGPUBufferDescriptor bufferDesc = {};
-  bufferDesc.label = "Line Vertex Buffer"; // Added label
-  bufferDesc.size = sizeof(vertices);      // Initial size for 2 points
-  // Max size if lines can be longer? For now, this is fine, updated per draw.
-  // If you intended this buffer to hold arbitrary line lengths without re-creation,
-  // it would need to be larger. But current drawLine updates with specific length.
+  bufferDesc.label = "Line Vertex Buffer";
+  bufferDesc.size = sizeof(vertices);
   bufferDesc.usage = WGPUBufferUsage_Vertex | WGPUBufferUsage_CopyDst;
-  bufferDesc.mappedAtCreation = 0; // Correct
+  bufferDesc.mappedAtCreation = 0;
 
   lineVertexBuffer = wgpuDeviceCreateBuffer(device, &bufferDesc);
-  if (lineVertexBuffer == nullptr) { // Added null check
+  if (lineVertexBuffer == nullptr) {
     throw std::runtime_error("Failed to create line vertex buffer");
   }
-  // Initialize with default line (0,0) to (1,0)
   wgpuQueueWriteBuffer(wgpuDeviceGetQueue(device), lineVertexBuffer, 0, vertices, sizeof(vertices));
 }
 
@@ -191,9 +185,9 @@ WGPURenderPipeline Renderer::createRenderPipeline(WGPUPrimitiveTopology topology
   pipelineDesc.fragment = &fragmentState;
 
   WGPUMultisampleState multisampleState = {};
-  multisampleState.count = 1;                  // Specify 1 for no multisampling
-  multisampleState.mask = 0xFFFFFFFF;          // Default mask
-  multisampleState.alphaToCoverageEnabled = 0; // Default
+  multisampleState.count = 1;
+  multisampleState.mask = 0xFFFFFFFF;
+  multisampleState.alphaToCoverageEnabled = 0;
   pipelineDesc.multisample = multisampleState;
 
   WGPURenderPipeline pipeline = wgpuDeviceCreateRenderPipeline(device, &pipelineDesc);

@@ -1,7 +1,6 @@
 // shader.h
 #pragma once
 #include <GLFW/glfw3.h>
-#include <filesystem>
 #include <glfw3webgpu.h>
 #include <glm/glm.hpp>
 #include <string>
@@ -10,7 +9,9 @@
 
 class Shader {
 public:
-  Shader(std::filesystem::path vertexPath, std::filesystem::path fragmentPath, WGPUDevice device);
+  // Constructor now takes shader names instead of file paths
+  Shader(const std::string &vertexShaderName, const std::string &fragmentShaderName,
+         WGPUDevice device);
   ~Shader();
 
   WGPUShaderModule getVertexModule() const { return vertexModule; }
@@ -40,7 +41,8 @@ private:
   WGPUBindGroup uniformBindGroup;
   WGPUBindGroupLayout bindGroupLayout;
 
-  std::filesystem::path vertexPath, fragmentPath;
+  // Store shader names instead of paths
+  std::string vertexShaderName, fragmentShaderName;
 
   // Separate uniform data structures for better alignment
   struct TransformUniforms {
@@ -57,8 +59,8 @@ private:
     float extraFloats[12]; // Extra space for future material properties
   } materialData;
 
-  WGPUShaderModule createShaderModule(const std::filesystem::path &path);
+  WGPUShaderModule createShaderModule(const std::string &shaderName);
   void createUniformBuffers();
   void createBindGroup();
-  static std::string loadShaderSource(const std::filesystem::path &path);
+  static std::string loadShaderSource(const std::string &shaderName);
 };

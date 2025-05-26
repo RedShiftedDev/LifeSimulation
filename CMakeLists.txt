@@ -178,10 +178,6 @@ set(IMGUI_BACKENDS_SOURCES
     external/imgui/backends/imgui_impl_wgpu.cpp
 )
 
-# Resource handling (keeping shader resources, but they'll be WGSL now)
-set(RESOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src/Graphics/shaders")
-set(RESOURCE_DEST "shaders")
-
 # Configure executable with platform-specific settings
 if(PLATFORM_WINDOWS)
     add_executable(${PROJECT_NAME} WIN32
@@ -198,15 +194,6 @@ if(PLATFORM_WINDOWS)
         src/Common.cpp
         ${IMGUI_SOURCES}
         ${IMGUI_BACKENDS_SOURCES}
-    )
-
-    # Windows resource handling
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:${PROJECT_NAME}>/${RESOURCE_DEST}"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-            "${RESOURCE_DIR}"
-            "$<TARGET_FILE_DIR:${PROJECT_NAME}>/${RESOURCE_DEST}"
-        COMMENT "Copying shader resources to output directory"
     )
 elseif(PLATFORM_MACOS)
     add_executable(${PROJECT_NAME} MACOSX_BUNDLE
@@ -232,13 +219,6 @@ elseif(PLATFORM_MACOS)
         # MACOSX_BUNDLE_INFO_PLIST ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
         # XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "com.yourcompany.lifesimulation"
     )
-
-    # Add bundle resources
-    set_source_files_properties(
-        ${RESOURCE_DIR}
-        PROPERTIES
-        MACOSX_PACKAGE_LOCATION Resources/shaders
-    )
 else()
     # Linux/Unix standard executable
     add_executable(${PROJECT_NAME}
@@ -255,15 +235,6 @@ else()
         src/Common.cpp
         ${IMGUI_SOURCES}
         ${IMGUI_BACKENDS_SOURCES}
-    )
-
-    # Linux resource handling
-    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E make_directory "$<TARGET_FILE_DIR:${PROJECT_NAME}>/${RESOURCE_DEST}"
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-            "${RESOURCE_DIR}"
-            "$<TARGET_FILE_DIR:${PROJECT_NAME}>/${RESOURCE_DEST}"
-        COMMENT "Copying shader resources to output directory"
     )
 endif()
 

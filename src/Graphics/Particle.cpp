@@ -89,9 +89,10 @@ void Particle::initializeSharedResources(WGPUDevice dev, WGPUTextureFormat swapC
   device = dev;
 
   try {
-    particleShader =
-        std::make_unique<Shader>("../../../../src/Graphics/shaders/particle.vert.wgsl",
-                                 "../../../../src/Graphics/shaders/particle.frag.wgsl", device);
+    // Use embedded shader names instead of file paths
+    particleShader = std::make_unique<Shader>("particle.vert.wgsl", // vertex shader name
+                                              "particle.frag.wgsl", // fragment shader name
+                                              device);
 
     if (!particleShader || (particleShader->getVertexModule() == nullptr) ||
         (particleShader->getFragmentModule() == nullptr)) {
