@@ -114,7 +114,7 @@ void Renderer::setupLineBuffer() {
   bufferDesc.mappedAtCreation = 0; // Correct
 
   lineVertexBuffer = wgpuDeviceCreateBuffer(device, &bufferDesc);
-  if (!lineVertexBuffer) { // Added null check
+  if (lineVertexBuffer == nullptr) { // Added null check
     throw std::runtime_error("Failed to create line vertex buffer");
   }
   // Initialize with default line (0,0) to (1,0)

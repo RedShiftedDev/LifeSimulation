@@ -65,7 +65,7 @@ public:
   static void renderAll(const glm::mat4 &projection, WGPURenderPassEncoder renderPass);
   static void updateAllInstanceData();
 
-  static void initInteractionMatrix(int numTypes);
+  static void initInteractionMatrix(int num_types_to_init);
   static void randomizeInteractionMatrix();
   static float calculateForce(float r_norm, float a);
 

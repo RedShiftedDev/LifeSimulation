@@ -93,14 +93,14 @@ void Particle::initializeSharedResources(WGPUDevice dev, WGPUTextureFormat swapC
         std::make_unique<Shader>("../../../../src/Graphics/shaders/particle.vert.wgsl",
                                  "../../../../src/Graphics/shaders/particle.frag.wgsl", device);
 
-    if (!particleShader || !particleShader->getVertexModule() ||
-        !particleShader->getFragmentModule()) {
+    if (!particleShader || (particleShader->getVertexModule() == nullptr) ||
+        (particleShader->getFragmentModule() == nullptr)) {
       throw std::runtime_error("Particle shader module creation failed or modules are null.");
     }
-    if (!particleShader->getBindGroupLayout()) {
+    if (particleShader->getBindGroupLayout() == nullptr) {
       throw std::runtime_error("Particle shader bind group layout is null.");
     }
-    if (!particleShader->getUniformBindGroup()) {
+    if (particleShader->getUniformBindGroup() == nullptr) {
       throw std::runtime_error("Particle shader uniform bind group is null.");
     }
 
@@ -108,7 +108,7 @@ void Particle::initializeSharedResources(WGPUDevice dev, WGPUTextureFormat swapC
     createInstanceBuffer();
     createRenderPipeline(swapChainFormat);
 
-    if (!renderPipeline) {
+    if (renderPipeline == nullptr) {
       throw std::runtime_error("Particle render pipeline is null after creation steps.");
     }
 
@@ -120,19 +120,19 @@ void Particle::initializeSharedResources(WGPUDevice dev, WGPUTextureFormat swapC
               << std::endl;
     // ... (cleanup code from your previous version) ...
     particleShader.reset();
-    if (vertexBuffer) {
+    if (vertexBuffer != nullptr) {
       wgpuBufferRelease(vertexBuffer);
       vertexBuffer = nullptr;
     }
-    if (indexBuffer) {
+    if (indexBuffer != nullptr) {
       wgpuBufferRelease(indexBuffer);
       indexBuffer = nullptr;
     }
-    if (instanceBuffer) {
+    if (instanceBuffer != nullptr) {
       wgpuBufferRelease(instanceBuffer);
       instanceBuffer = nullptr;
     }
-    if (renderPipeline) {
+    if (renderPipeline != nullptr) {
       wgpuRenderPipelineRelease(renderPipeline);
       renderPipeline = nullptr;
     }
@@ -382,7 +382,7 @@ void Particle::renderAll(const glm::mat4 &projection, WGPURenderPassEncoder rend
   if (!initialized || particleCount == 0) {
     return;
   }
-  if (!renderPipeline) {
+  if (renderPipeline == nullptr) {
     std::cerr << "Particle::renderAll: Skipping render, renderPipeline is null." << std::endl;
     return;
   }
@@ -391,12 +391,12 @@ void Particle::renderAll(const glm::mat4 &projection, WGPURenderPassEncoder rend
     return;
   }
   WGPUBindGroup currentBindGroup = particleShader->getUniformBindGroup();
-  if (!currentBindGroup) {
+  if (currentBindGroup == nullptr) {
     std::cerr << "Particle::renderAll: Skipping render, particleShader's uniformBindGroup is null."
               << std::endl;
     return;
   }
-  if (!vertexBuffer || !indexBuffer || !instanceBuffer) {
+  if ((vertexBuffer == nullptr) || (indexBuffer == nullptr) || (instanceBuffer == nullptr)) {
     std::cerr << "Particle::renderAll: Skipping render, one or more particle buffers are null."
               << std::endl;
     return;

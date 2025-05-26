@@ -20,10 +20,10 @@ Shader::Shader(std::filesystem::path vertexPath, std::filesystem::path fragmentP
   std::memset(&materialData, 0, sizeof(materialData));
 
   // Set default values
-  transformData.model = glm::mat4(1.0f);
-  transformData.projection = glm::mat4(1.0f);
-  materialData.color = glm::vec3(1.0f);
-  materialData.alpha = 1.0f;
+  transformData.model = glm::mat4(1.0F);
+  transformData.projection = glm::mat4(1.0F);
+  materialData.color = glm::vec3(1.0F);
+  materialData.alpha = 1.0F;
 
   // Create shader modules
   this->vertexModule = createShaderModule(this->vertexPath);
@@ -184,7 +184,7 @@ void Shader::createUniformBuffers() {
   transformBufferDesc.label = "Transform Uniform Buffer";
   transformBufferDesc.size = sizeof(transformData);
   transformBufferDesc.usage = WGPUBufferUsage_Uniform | WGPUBufferUsage_CopyDst;
-  transformBufferDesc.mappedAtCreation = false; // Standard practice unless pre-filling
+  transformBufferDesc.mappedAtCreation = 0U; // Standard practice unless pre-filling
 
   transformBuffer = wgpuDeviceCreateBuffer(device, &transformBufferDesc);
   if (transformBuffer == nullptr) {
@@ -195,7 +195,7 @@ void Shader::createUniformBuffers() {
   materialBufferDesc.label = "Material Uniform Buffer";
   materialBufferDesc.size = sizeof(materialData);
   materialBufferDesc.usage = WGPUBufferUsage_Uniform | WGPUBufferUsage_CopyDst;
-  materialBufferDesc.mappedAtCreation = false;
+  materialBufferDesc.mappedAtCreation = 0U;
 
   materialBuffer = wgpuDeviceCreateBuffer(device, &materialBufferDesc);
   if (materialBuffer == nullptr) {
@@ -212,13 +212,13 @@ void Shader::createBindGroup() {
   bindingLayouts[0].binding = 0;
   bindingLayouts[0].visibility = WGPUShaderStage_Vertex | WGPUShaderStage_Fragment;
   bindingLayouts[0].buffer.type = WGPUBufferBindingType_Uniform;
-  bindingLayouts[0].buffer.hasDynamicOffset = false; // Default
+  bindingLayouts[0].buffer.hasDynamicOffset = 0U; // Default
   bindingLayouts[0].buffer.minBindingSize = sizeof(transformData);
 
   bindingLayouts[1].binding = 1;
   bindingLayouts[1].visibility = WGPUShaderStage_Fragment; // Only fragment for material typically
   bindingLayouts[1].buffer.type = WGPUBufferBindingType_Uniform;
-  bindingLayouts[1].buffer.hasDynamicOffset = false; // Default
+  bindingLayouts[1].buffer.hasDynamicOffset = 0U; // Default
   bindingLayouts[1].buffer.minBindingSize = sizeof(materialData);
 
   WGPUBindGroupLayoutDescriptor layoutDesc = {};
