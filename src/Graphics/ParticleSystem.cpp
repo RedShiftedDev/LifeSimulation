@@ -1,8 +1,12 @@
 #include "ParticleSystem.h"
 #include <algorithm>
+#if defined(__ARM_NEON) || defined(__ARM_NEON__)
 #include <arm_neon.h>
-#include <cmath>
-#include <dispatch/dispatch.h>
+#define USE_NEON 1
+#else
+#define USE_NEON 0
+#endif
+#include <chrono>
 #include <omp.h>
 #include "Graphics/Simulation.h"
 
@@ -257,10 +261,12 @@ Particle &ParticleSystem::createParticle() {
 
   static std::vector<size_t> inactiveIndices;
 
-  static uint64_t lastRebuildTime = 0;
-  uint64_t currentTime = dispatch_time(0, 0);
+  using Clock = std::chrono::steady_clock;
+  static Clock::time_point lastRebuildTime = Clock::now();
+  Clock::time_point currentTime = Clock::now();
 
-  if (inactiveIndices.empty() || currentTime - lastRebuildTime > 1000000000) { // ~1 second
+  if (inactiveIndices.empty() ||
+      std::chrono::duration_cast<std::chrono::seconds>(currentTime - lastRebuildTime).count() > 1) {
     inactiveIndices.clear();
     for (size_t i = 0; i < particles.size(); i++) {
       if (!particles[i].isActive()) {

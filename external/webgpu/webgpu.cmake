@@ -1,26 +1,5 @@
 # This file is part of the "Learn WebGPU for C++" book.
 #   https://eliemichel.github.io/LearnWebGPU
-# 
-# MIT License
-# Copyright (c) 2022-2024 Elie Michel and the wgpu-native authors
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
 
 include(FetchContent)
 
@@ -32,11 +11,6 @@ set_property(CACHE WEBGPU_BACKEND PROPERTY STRINGS EMSCRIPTEN WGPU WGPU_STATIC D
 macro(FetchContent_DeclareShallowGit Name GIT_REPOSITORY GitRepository GIT_TAG GitTag)
 	FetchContent_Declare(
 		"${Name}"
-
-		# This is what it'd look line if GIT_SHALLOW was indeed working:
-		#GIT_REPOSITORY "${GitRepository}"
-		#GIT_TAG        "${GitTag}"
-		#GIT_SHALLOW    ON
 
 		# Manual download mode instead:
 		DOWNLOAD_COMMAND
@@ -92,3 +66,33 @@ if (NOT TARGET webgpu)
 
 	endif()
 endif()
+function(target_copy_webgpu_binaries target)
+    # Construct binary path from correct subfolder (WEBGPU_PLATFORM is set globally)
+    set(WEBGPU_BIN_PATH "${CMAKE_CURRENT_BINARY_DIR}/_deps/webgpu-backend-wgpu-src/bin/${WEBGPU_PLATFORM}")
+
+    # Copy the correct WebGPU dynamic library to the build output dir
+    if(EXISTS "${WEBGPU_BIN_PATH}/libwgpu_native.so")
+        add_custom_command(TARGET ${target} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${WEBGPU_BIN_PATH}/libwgpu_native.so"
+            $<TARGET_FILE_DIR:${target}>
+            COMMENT "Copying libwgpu_native.so to output directory"
+        )
+    elseif(EXISTS "${WEBGPU_BIN_PATH}/wgpu_native.dll")
+        add_custom_command(TARGET ${target} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${WEBGPU_BIN_PATH}/wgpu_native.dll"
+            $<TARGET_FILE_DIR:${target}>
+            COMMENT "Copying wgpu_native.dll to output directory"
+        )
+    elseif(EXISTS "${WEBGPU_BIN_PATH}/libwgpu_native.dylib")
+        add_custom_command(TARGET ${target} POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${WEBGPU_BIN_PATH}/libwgpu_native.dylib"
+            $<TARGET_FILE_DIR:${target}>
+            COMMENT "Copying libwgpu_native.dylib to output directory"
+        )
+    else()
+        message(WARNING "WebGPU binary not found in ${WEBGPU_BIN_PATH}")
+    endif()
+endfunction()
